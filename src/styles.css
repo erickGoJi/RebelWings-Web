@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: oswald;
+  src: url("./assets/font/Oswald-Bold.ttf");
+}
+
+*,
+body {
+  font-family: oswald;
+}
