@@ -1,3 +1,5 @@
+import { MantenimientoComponent } from './../../pages/sucursales/mantenimiento/mantenimiento.component';
+import { StockPolloComponent } from './../../pages/sucursales/stock-pollo/stock-pollo.component';
 import { Routes } from "@angular/router";
 
 
@@ -9,6 +11,8 @@ import { IconsComponent } from "../../pages/icons/icons.component";
 import { MapsComponent } from "../../pages/maps/maps.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
+import { SucursalesComponent } from "app/pages/sucursales/sucursales/sucursales.component";
+import { TareasComponent } from 'app/pages/sucursales/tareas/tareas.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -19,4 +23,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "maps", component: MapsComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "upgrade", component: UpgradeComponent },
+  { path: "sucursales", component: SucursalesComponent },
+  { path: "stock-pollo", component: StockPolloComponent },
+  { path: "mantenimiento", component: MantenimientoComponent },
+  { path: "tarea", component: TareasComponent },
 ];

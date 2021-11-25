@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper">
   <div class="logo" style="background-color: #1d1d1b">
-    <div style="text-align: center;" class="simple-text logo-normal">
+    <div style="text-align: center" class="simple-text logo-normal">
       <img style="width: 27%" src="./assets/RW_LogoWEB.png" />
     </div>
     <!-- <a class="simple-text logo-mini">
@@ -17,8 +17,11 @@
       class="{{ menuItem.class }}"
     >
       <a [routerLink]="[menuItem.path]">
-        <i class="nc-icon {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
+        <img
+          src="./assets/icon/{{menuItem.icon}}.svg"
+        />
+        <!-- <i class="nc-icon {{ menuItem.icon }}"></i> -->
+        <span>{{ menuItem.title }}</span>
       </a>
     </li>
   </ul>

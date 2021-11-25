@@ -1,11 +1,17 @@
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
+// @import url('./../../../styles.css');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Oswald&display=swap');
+
 
 $font-color: #66615b !default;
 $fill-font-color: rgba(255, 255, 255, 0.8);
-$font-family-sans-serif: "Montserrat", "Helvetica", Arial, sans-serif;
-$sans-serif-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif: "oswald";
+$sans-serif-family: "oswald";
+// $font-family-sans-serif: "Montserrat", "Helvetica", Arial, sans-serif;
+// $sans-serif-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 
 $none: 0 !default;
 $border-thin: 1px !default;

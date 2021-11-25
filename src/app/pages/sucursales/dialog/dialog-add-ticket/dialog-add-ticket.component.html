@@ -1,0 +1,62 @@
+<div class="container" *ngIf="data.length != 0">
+  <div class="row mb-4">
+    <div class="col-10">
+      <h4 class="title">TICKET LEVANTADO</h4>
+    </div>
+    <div class="col-2 align-btn">
+      <i
+        style="cursor: pointer; color: #cf3c4f"
+        (click)="close()"
+        class="nc-icon nc-simple-remove"
+      ></i>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-2">
+      <img src="./assets/icon/sucursal.png" alt="" />
+    </div>
+    <div class="col-10 subtitle">
+      <span>Rebel Wings sucursal {{ param.sucursal }}</span>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-6">
+      <label class="title" for="">Parte de la sucursal</label>
+      <br />
+      <span>{{ data.partBranch.partBranch }}</span>
+    </div>
+    <div class="col-6">
+      <label class="title" for="">Sección específica</label>
+      <br />
+      <span>{{ data.specificSection.specificSection }}</span>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <label for="Descripción del problema"></label>
+      <span>{{ data.problem }}</span>
+    </div>
+    <br />
+    <div class="col-12 align-btn mt-4">
+      <button
+        style="border-radius: 23px; margin-right: 1rem;"
+        [disabled]="disabled == true"
+        (click)="save(1)"
+        type="button"
+        class="btn btn-warning btn-lg"
+      >
+        Abrir
+      </button>
+
+      <button
+        style="border-radius: 23px"
+        [disabled]="disabled == true"
+        (click)="save(2)"
+        type="button"
+        class="btn btn-danger btn-lg"
+      >
+        Resolver
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container">
+  <!--***********data********************-->
+  <div class="row" id="idscroll">
+    <div class="col-1 align-center">
+      <img
+        class="img-fluid"
+        src="./assets/icon/ilustracion_stock_de_pollo.png"
+        alt=""
+      />
+    </div>
+    <div class="col-11 align-center">
+      <h4 class="title align-center">STOCK DE POLLO</h4>
+    </div>
+    <div class="col-2 align-center">
+      <br />
+      <br />
+      <h5 class="subtitle-negro">SUCURSALES</h5>
+    </div>
+    <div class="col-10 align-center">
+      <br><br>
+      <span class="date-grey">
+        {{ today | date: "dd MMM yyy" }}
+      </span>
+    </div>
+  </div>
+  <br />
+  <div
+    data-bs-spy="scroll"
+    data-bs-target="#idscroll"
+    data-bs-offset="0"
+    class="scrollspy-example row"
+    tabindex="0"
+  >
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col-3">Sucursal</th>
+            <th scope="col-3">Dirección</th>
+            <th scope="col-2">Regional</th>
+            <th scope="col-2">Supervisores</th>
+            <th scope="col-2">Espectativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" (click)="addStock(item.salesExpectationsId, item.branchName, item.branchId)">
+            <td class="col-3">
+              <div class="row">
+                <div class="col-3">
+                  <img src="./assets/icon/sucursal.png" alt="" />
+                </div>
+                <div class="col-9">
+                  <span>Sucursal {{ item.branchName }}</span>
+                </div>
+              </div>
+            </td>
+            <td class="col-3">
+              Calle Lorem ipsum #345 Local 4
+              CP. 13453, Tlalpan, CDMX.
+            </td>
+            <td class="col-2">Regional no disponible</td>
+            <td class="col-2">{{item.supervisorName}}</td>
+            <td class="col-2">
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    src="./assets/icon/ilustracion_stock_de_pollo.png"
+                    alt=""
+                  />
+                </div>
+                <div class="col-8">
+                  <span>{{item.salesExpectations}}</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

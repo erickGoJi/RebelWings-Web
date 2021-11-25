@@ -16,17 +16,28 @@ export class LoginComponent implements OnInit {
   public dataProfile: any;
   public validar = false;
   public disabled = false;
+  public typeInput = "password";
+  eyed = false;
 
   constructor(
     public router: Router,
     public service: LoginService,
-    public _dialog: MatDialog,
+    public _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
   forgotPassword() {
     console.log("forgot password");
     this.router.navigateByUrl("recuperar-contrasena");
+  }
+  public viewPassword(type) {
+    if (type === true) {
+      this.typeInput = "text";
+      this.eyed = true;
+    } else {
+      this.typeInput = "password";
+      this.eyed = false;
+    }
   }
   login(correo, contrasena) {
     this.disabled = true;
@@ -49,7 +60,7 @@ export class LoginComponent implements OnInit {
               header: "Error",
               body: resp.message,
             },
-            width: "350px"
+            width: "350px",
           });
 
           // this.generalMessage(resp.message);
@@ -57,6 +68,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.disabled = false;
       }
     );
   }

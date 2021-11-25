@@ -26,6 +26,7 @@
       <div class="input-group mb-3">
         <input
           type="email"
+          autocomplete="ÑÖcompletes"
           [(ngModel)]="email"
           class="form-control"
           placeholder="Ingresa tu usuario"
@@ -35,8 +36,8 @@
         <div class="input-group-append">
           ,
           <span class="input-group-text">
-            <i style="color: #cf3c4f" class="nc-icon nc-email-85"></i>
-            <!-- <ion-icon color="danger" name="mail-outline"></ion-icon> -->
+            <!-- mail -->
+            <i class="bi bi-envelope text-danger" style="cursor: pointer;"></i>
           </span>
         </div>
       </div>
@@ -45,7 +46,8 @@
       <label for="">Contraseña</label>
       <div class="input-group mb-3">
         <input
-          type="password"
+          type="{{ typeInput }}"
+          autocomplete="ÑÖcompletes"
           [(ngModel)]="password"
           class="form-control"
           placeholder="Ingresa tu contraseña"
@@ -53,9 +55,13 @@
         />
         <div class="input-group-append">
           <span class="input-group-text">
-            <i style=" color: #cf3c4f;" class="nc-icon nc-key-25"></i>
+            <!-- key -->
+            <i class="bi bi-key text-danger" *ngIf="password == '' || password == undefined" style="cursor: pointer;"></i>
+            <!-- on eye  -->
+            <i class="bi bi-eye text-danger" *ngIf="(password !== '' && password !== undefined) && eyed === false" (click)="viewPassword(true)" style="cursor: pointer;"></i>
+            <!-- off eye -->
+            <i class="bi bi-eye-slash text-danger" *ngIf="(password !== '' && password !== undefined) && eyed === true" (click)="viewPassword(false)" style="cursor: pointer;"></i>
 
-            <!-- <ion-icon slot="end" color="danger" name="key-outline"></ion-icon> -->
           </span>
         </div>
       </div>

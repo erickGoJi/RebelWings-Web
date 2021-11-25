@@ -21,6 +21,8 @@ import { WelcomeComponent } from './pages/auth/welcome/welcome.component';
 import { DialogGeneralMessageComponent } from './pages/dialog-general/dialog-general-message/dialog-general-message.component';
 import { DialogGeneralConfimationComponent } from './pages/dialog-general/dialog-general-confimation/dialog-general-confimation.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import { DialogAddStockPolloComponent } from './pages/sucursales/dialog/dialog-add-stock-pollo/dialog-add-stock-pollo.component';
+import { DialogAddTicketComponent } from './pages/sucursales/dialog/dialog-add-ticket/dialog-add-ticket.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     ForgotPasswordComponent,
     WelcomeComponent,
     DialogGeneralConfimationComponent,
+    DialogAddStockPolloComponent,
+    DialogAddTicketComponent,
 
   ],
   imports: [
