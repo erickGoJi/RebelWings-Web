@@ -1,1 +1,83 @@
-<p>En construcción!</p>
+<div class="container">
+  <!--***********data********************-->
+  <div class="row" id="idscroll">
+    <div class="col-12">
+      <h4 class="title">NUEVA TAREA</h4>
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col-9">
+      <h4 class="subtitle-negro align-center">INFORMACIÓN</h4>
+    </div>
+    <div class="col-3">
+      <button (click)="addStock(0)" style="background-color: #d0122d; border-radius: 16px" type="button" class="btn">
+        GUARDAR
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="container">
+    <div class="row">
+      <!-- imagen -->
+      <div class="col-2">
+        <label>Ilustración</label>
+        <br>
+        <input type="image"  src="./../../../../assets/icon/group.png" width="48" height="48">
+      </div>
+      <!-- inputs -->
+      <div class="col-10">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="tarea">Nombre de la tarea</label>
+              <input (focus)="activeNombre = false" required type="text" class="form-control" id="tarea"
+                placeholder="Nombre de tarea" />
+            </div>
+            <span style="color: #ad182d; font-size: 12px" *ngIf="activeNombre">Campo requerido</span>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="turno">Turno</label>
+              <select class="form-control" id="turno" (focus)="activeTurno = false" required>
+                <option value="1">Matutino</option>
+                <option value="2">Vespertino</option>
+              </select>
+            </div>
+            <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span>
+          </div>
+          <!-- descripcion -->
+          <div class="col-12">
+            <div class="form-group">
+              <label for="tarea">Descripción</label>
+              <input (focus)="activeDescripcion = false" required type="text" class="form-control" id="tarea"
+                placeholder="Nombre de tarea" />
+            </div>
+            <span style="color: #ad182d; font-size: 12px" *ngIf="activeDescripcion">Campo requerido</span>
+          </div>
+          <!-- asignado -->
+          <div class="col-6">
+            <div class="form-group">
+              <label for="asignado">Asignado a</label>
+              <select class="form-control" id="asignado" (focus)="activeSupervisor = false" required>
+                <option value="1">Supervisor 1</option>
+                <option value="2">Supervisor 2</option>
+              </select>
+            </div>
+            <span style="color: #ad182d; font-size: 12px" *ngIf="activeSupervisor">Campo requerido</span>
+          </div>
+          <!-- sucursal -->
+          <div class="col-6">
+            <div class="form-group">
+              <label for="sucursal">Sucursal</label>
+              <select class="form-control" id="sucursal" (focus)="activeSucursal = false" required>
+                <option value="1">Sucursal 1</option>
+                <option value="2">Sucursal 2</option>
+              </select>
+            </div>
+            <span style="color: #ad182d; font-size: 12px" *ngIf="activeSucursal">Campo requerido</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
