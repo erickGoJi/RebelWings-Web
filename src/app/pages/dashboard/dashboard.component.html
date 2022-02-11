@@ -1,157 +1,197 @@
+<!-- header -->
 <div class="row">
+  <div class="col-md-1 align-center">
+    <img class="img-fluid" src="./assets/icon/ilustracion-dashboard.svg" alt="" />
+  </div>
+  <div class="col-md-11 align-center">
+    <h4 class="title align-center">DASHBOARD</h4>
+  </div>
+</div>
+<!-- filtros -->
+<div class="row my-4">
+  <div class="col-12 col-md-3 align-center">
+    <h4 class="subtitle-negro">INFORME DE ACTIVIDAD</h4>
+  </div>
+  <div class="col-md-5 align-center">
+    <span class="date-grey">
+      {{ dateDash | date: "dd MMM yyy" }}
+    </span>
+  </div>
+  <div class="col-md-4 align-center">
+    <div class="form-group">
+      <label for="fechaInicial">Fecha</label>
+      <div class="input-group">
+        <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
+          [(ngModel)]="dateDash" (ngModelChange)="getDataDash(dateDash)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- tarjetas de informacion -->
+<div class="row my-4">
+  <!-- omision -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
         <div class="row">
-          <div class="col-5 col-md-4">
-            <div class="icon-big text-center icon-warning">
-              <i class="nc-icon nc-globe text-warning"></i>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <h5>Omisión de Actividades</h5>
             </div>
           </div>
-          <div class="col-7 col-md-8">
-            <div class="numbers">
-              <p class="card-category">Capacity</p>
-              <p class="card-title">150GB
-                <p>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <span class="card_porcentage">{{data.activityReportAdmin.omissionActivities | number: '.1-2'}} %</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-refresh"></i> Update Now
         </div>
       </div>
     </div>
   </div>
+  <!-- ticket -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
         <div class="row">
-          <div class="col-5 col-md-4">
-            <div class="icon-big text-center icon-warning">
-              <i class="nc-icon nc-money-coins text-success"></i>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <h5>Tickets levantados</h5>
             </div>
           </div>
-          <div class="col-7 col-md-8">
-            <div class="numbers">
-              <p class="card-category">Revenue</p>
-              <p class="card-title">$ 1,345
-                <p>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <span class="card_porcentage">{{data.activityReportAdmin.tickets | number}}</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-calendar-o"></i> Last day
         </div>
       </div>
     </div>
   </div>
+  <!-- asistencia -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
         <div class="row">
-          <div class="col-5 col-md-4">
-            <div class="icon-big text-center icon-warning">
-              <i class="nc-icon nc-vector text-danger"></i>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <h5>Promedio de asistencias</h5>
             </div>
           </div>
-          <div class="col-7 col-md-8">
-            <div class="numbers">
-              <p class="card-category">Errors</p>
-              <p class="card-title">23
-                <p>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <span class="card_porcentage">{{data.activityReportAdmin.averageNumberAttendances | number:
+                '.1-2'}}%</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-clock-o"></i> In the last hour
         </div>
       </div>
     </div>
   </div>
+  <!-- evaluzcion -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-body ">
         <div class="row">
-          <div class="col-5 col-md-4">
-            <div class="icon-big text-center icon-warning">
-              <i class="nc-icon nc-favourite-28 text-primary"></i>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <h5>Evaluación promedio</h5>
             </div>
           </div>
-          <div class="col-7 col-md-8">
-            <div class="numbers">
-              <p class="card-category">Followers</p>
-              <p class="card-title">+45K
-                <p>
+          <div class="col-12 my-2">
+            <div class="text-center">
+              <span class="card_porcentage">{{data.activityReportAdmin.averageEvaluation | number}} <i
+                  class="bi bi-star-fill text-warning"></i></span>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-refresh"></i> Update now
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row">
+
+<!-- grafica 2 -->
+<div class="row"  >
+  <div class="col-12 my-4">
+    <h4 class="subtitle-negro">SUCURSALES CON MÁS OMISIONES</h4>
+  </div>
   <div class="col-md-12">
     <div class="card ">
-      <div class="card-header ">
-        <h5 class="card-title">Users Behavior</h5>
-        <p class="card-category">24 Hours performance</p>
-      </div>
       <div class="card-body ">
-        <canvas id=chartHours width="400" height="100"></canvas>
-      </div>
-      <div class="card-footer ">
-        <hr>
-        <div class="stats">
-          <i class="fa fa-history"></i> Updated 3 minutes ago
-        </div>
+        <canvas id="branchOmision" width="400" height="100"></canvas>
       </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-4">
+
+
+<div class="row"  >
+  <!--------------actividades mas omitidas----------------->
+  <div class="col-12 col-md-6" >
     <div class="card ">
       <div class="card-header ">
-        <h5 class="card-title">Email Statistics</h5>
-        <p class="card-category">Last Campaign Performance</p>
+        <h5 class="card-title">ACTIVIDADES MÁS OMITIDAS</h5>
       </div>
       <div class="card-body ">
-        <canvas id="chartEmail"></canvas>
+        <canvas id="activityOmision"></canvas>
       </div>
       <div class="card-footer ">
         <div class="legend">
-          <i class="fa fa-circle text-primary"></i> Opened
-          <i class="fa fa-circle text-warning"></i> Read
-          <i class="fa fa-circle text-danger"></i> Deleted
-          <i class="fa fa-circle text-gray"></i> Unopened
-        </div>
-        <hr>
-        <div class="stats">
-          <i class="fa fa-calendar"></i> Number of emails sent
+          <i class="fa fa-circle text-primary"></i> Actividad 1
+          <i class="fa fa-circle text-warning"></i> Actividad 2
+          <i class="fa fa-circle text-danger"></i> Actividad 3
+          <i class="fa fa-circle text-gray"></i> Actividad 4
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-8">
-    <div class="card card-chart">
+  <!-----------------omisiones por turno-------------------->
+  <div class="col-12 col-md-6">
+    <div class="row">
+      <!-- omision -->
+      <div class="col-12 ">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-12 my-2">
+                <div class="text-center">
+                  <h5>Matutino</h5>
+                </div>
+              </div>
+              <div class="col-12 my-2">
+                <div class="text-center">
+                  <span class="card_porcentage">{{data.omissionsPerShifts[0].count | number}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ticket -->
+      <div class="col-12 ">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-12 my-2">
+                <div class="text-center">
+                  <h5>Vespertino</h5>
+                </div>
+              </div>
+              <div class="col-12 my-2">
+                <div class="text-center">
+                  <span class="card_porcentage">{{data.omissionsPerShifts[1].count | number}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-title">NASDAQ: AAPL</h5>
-        <p class="card-category">Line Chart with Points</p>
+        <h5 class="card-title">OMISIONES POR TURNO</h5>
       </div>
       <div class="card-body">
         <canvas id="speedChart" width="400" height="100"></canvas>
@@ -161,11 +201,8 @@
           <i class="fa fa-circle text-info"></i> Tesla Model S
           <i class="fa fa-circle text-warning"></i> BMW 5 Series
         </div>
-        <hr/>
-        <div class="card-stats">
-          <i class="fa fa-check"></i> Data information certified
-        </div>
+
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

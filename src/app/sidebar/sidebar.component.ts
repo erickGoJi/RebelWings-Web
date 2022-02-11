@@ -2,11 +2,21 @@ import { Component, OnInit } from '@angular/core';
 
 
 export interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
+  target: string;
+  id: string;
+  children: child[];
 }
+export interface child {
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
+}
+
 
 export const ROUTES: RouteInfo[] = [
   {
@@ -14,49 +24,74 @@ export const ROUTES: RouteInfo[] = [
     title: "Dashboard",
     icon: "dashboard-inactivo",
     class: "",
+    target: "#colapseDashboard",
+    id: "colapseDashboard",
+    children: [{
+      path: "/regionales",
+      title: "Regionales",
+      icon: "regional-inactivo",
+      class: ""
+    },
+    {
+      path: "/supervisores",
+      title: "Supervisores",
+      icon: "supervisor-inactivo",
+      class: ""
+    },
+    ]
   },
   {
     path: "/sucursales",
     title: "Sucursales",
     icon: "sucursales-inactivo",
     class: "",
-  },
-  {
-    path: "/stock-pollo",
-    title: "Stock de pollo",
-    icon: "stock-de-pollo-inactivo",
-    class: "",
-  },
-  {
-    path: "/mantenimiento",
-    title: "Mantenimiento",
-    icon: "mantenimiento-inactivo",
-    class: "",
-  },
-  {
-    path: "/tarea",
-    title: "Tareas",
-    icon: "tareas-inactivo",
-    class: "",
+    target: "#colapseSucursales",
+    id: "colapseSucursales",
+    children: [
+      {
+        path: "/asistencias",
+        title: "Asistencias",
+        icon: "asistencias-inactivo",
+        class: "",
+      },
+      {
+        path: "/stock-pollo",
+        title: "Stock de pollo",
+        icon: "stock-de-pollo-inactivo",
+        class: "",
+      },
+      {
+        path: "/mantenimiento",
+        title: "Mantenimiento",
+        icon: "mantenimiento-inactivo",
+        class: "",
+      },
+      {
+        path: "/tarea",
+        title: "Tareas",
+        icon: "tareas-inactivo",
+        class: "",
+      },
+    ],
   },
 
-  // { path: '/maps',          title: 'Barra',              icon:'nc-pin-3',      class: '' },
-  // { path: '/notifications', title: 'Sistema y Caja',     icon:'nc-bell-55',    class: '' },
-  // { path: '/user',          title: 'Capacitación',      icon:'nc-single-02',  class: '' },
-  // { path: '/table',         title: 'Apertura',        icon:'nc-tile-56',    class: '' },
-  // { path: '/typography',    title: 'Cierre',        icon:'nc-caps-small', class: '' },
-  // { path: '/upgrade',       title: 'Inventario',    icon:'nc-spaceship',  class: 'active-pro' },
+
 ];
 
 @Component({
-    moduleId: module.id,
-    selector: 'sidebar-cmp',
-    templateUrl: 'sidebar.component.html',
+  moduleId: module.id,
+  selector: 'sidebar-cmp',
+  templateUrl: 'sidebar.component.html',
 })
 
 export class SidebarComponent implements OnInit {
-    public menuItems: any[];
-    ngOnInit() {
-        this.menuItems = ROUTES.filter(menuItem => menuItem);
-    }
+  public menuItems: any[];
+  public isCollapsed = false;
+
+  ngOnInit() {
+    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    console.log(this.menuItems);
+
+
+  }
 }

@@ -23,6 +23,8 @@ import { DialogGeneralConfimationComponent } from './pages/dialog-general/dialog
 import { MatDialogModule } from "@angular/material/dialog";
 import { DialogAddStockPolloComponent } from './pages/sucursales/dialog/dialog-add-stock-pollo/dialog-add-stock-pollo.component';
 import { DialogAddTicketComponent } from './pages/sucursales/dialog/dialog-add-ticket/dialog-add-ticket.component';
+import { DashboarMockupExampleComponent } from './pages/dashboar-mockup-example/dashboar-mockup-example.component';
+import { DashboardAsistenciasComponent } from './pages/sucursales/dashboard-asistencias/dashboard-asistencias.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ import { DialogAddTicketComponent } from './pages/sucursales/dialog/dialog-add-t
     DialogGeneralConfimationComponent,
     DialogAddStockPolloComponent,
     DialogAddTicketComponent,
+    DashboarMockupExampleComponent,
+    DashboardAsistenciasComponent,
+
 
   ],
   imports: [

@@ -15,7 +15,13 @@ export class DialogAddTicketComponent implements OnInit {
   public disabled = false;
   public today = new Date();
   public user;
-  public data: any[] = [];
+  public data;
+  public ticketId;
+  public dataBranch: any[] = [];
+  public nameBranch = '';
+  public status;
+  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+
   constructor(
     public dialogRef: MatDialogRef<DialogAddTicketComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
@@ -25,11 +31,11 @@ export class DialogAddTicketComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('data', this.data);
-
     console.log("data que se envia", this.param);
+    this.ticketId = this.param.id;
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
-    if (this.param.id != 0) {
+    if (this.ticketId != 0) {
       this.getData();
     }
   }
@@ -38,31 +44,62 @@ export class DialogAddTicketComponent implements OnInit {
   }
   getData() {
     this.services
-      .serviceGeneralGet("Ticket/" + this.param.id)
+      .serviceGeneralGet("Ticketing/" + this.ticketId)
       .subscribe((resp) => {
         if (resp.success) {
           this.data = resp.result;
+          this.status = this.data.status;
           console.log("resp", this.data);
+          this.getBranch();
         }
       });
   }
-  save(status) {
-    this.disabled = true;
-    this.services
-      .serviceGeneralPut(
-        `Ticket/${this.param.id}/${status}/${this.user.id}`,
-        ""
-      )
-      .subscribe(
-        (resp) => {
-          if (resp.success) {
-            console.log("exito", resp.result);
-            this.dialogRef.close(1);
+  // get  name sucursal
+  getBranch() {
+    let branchIdNumber = 0;
+    branchIdNumber = Number(this.data.branchId);
+    console.log('branchIdNumber', branchIdNumber);
+    this.services.serviceGeneralGet('StockChicken/Admin/All-Branch').subscribe(resp => {
+      if (resp.success) {
+        this.dataBranch = resp.result;
+        console.log('get branch', this.dataBranch);
+        this.dataBranch.forEach(element => {
+          if (element.branchId === branchIdNumber) {
+            this.nameBranch = element.branchName;
+            this.nameBranch = this.nameBranch.toUpperCase();
+            console.log('nombre', this.nameBranch);
           }
-        },
-        (error) => {
-          this.dialogRef.close(3);
+        });
+      }
+    });
+  }
+
+  save() {
+    var boolValue = JSON.parse(this.status);
+    this.data.status = boolValue;
+    this.disabled = true;
+    this.data.userId = this.user.id;
+    this.data.closedDate = this.today;
+    this.data.dateClosed = this.today;
+    this.updateData();
+  }
+
+  updateData() {
+    console.log('Obj To send put => ', this.data);
+    this.services
+      .serviceGeneralPut(`Ticketing/${this.ticketId}/Status`, this.data)
+      .subscribe((data) => {
+        if (data.success) {
+          console.log('data', data);
+          this.ngOnInit();
+          this.disabled = false;
+          this.dialogRef.close(1);
         }
-      );
+      },
+      (error) =>{
+        this.dialogRef.close(3);
+      });
+    this.disabled = false;
+
   }
 }

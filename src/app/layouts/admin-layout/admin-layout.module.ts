@@ -20,6 +20,9 @@ import { SucursalesComponent } from 'app/pages/sucursales/sucursales/sucursales.
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TareasComponent } from 'app/pages/sucursales/tareas/tareas.component';
+import { DasboardRegionalComponent } from 'app/pages/dasboard-regional/dasboard-regional.component';
+import { DasboardSupervisorComponent } from 'app/pages/dasboard-supervisor/dasboard-supervisor.component';
+// import { DashboardAsistenciasComponent } from 'app/pages/sucursales/dashboard-asistencias/dashboard-asistencias.component';
 
 @NgModule({
   imports: [
@@ -41,7 +44,10 @@ import { TareasComponent } from 'app/pages/sucursales/tareas/tareas.component';
     SucursalesComponent,
     StockPolloComponent,
     MantenimientoComponent,
-    TareasComponent
+    TareasComponent,
+    DasboardRegionalComponent,
+    DasboardSupervisorComponent,
+    // DashboardAsistenciasComponent
   ],
 })
 export class AdminLayoutModule {}

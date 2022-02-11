@@ -19,19 +19,19 @@ export class MantenimientoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("get data");
-    this.service.serviceGeneralGet("Ticket/Maintenance").subscribe((resp) => {
+    this.service.serviceGeneralGet("Ticketing").subscribe((resp) => {
       if (resp.success) {
         this.data = resp.result;
         console.log("data", this.data);
       }
     });
   }
-  addTicket(id: number, name: string) {
+  addTicket(id: number) {
     const dialogRef = this._dialog.open(DialogAddTicketComponent, {
       data: {
         id: id,
-        sucursal: name,
       },
+      width: "30rem",
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log("resp", result);

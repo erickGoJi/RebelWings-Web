@@ -34,5 +34,9 @@ export class AddTareasComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  addStock(id){
+    console.log('agregar tarea');
+
+  }
 
 }
