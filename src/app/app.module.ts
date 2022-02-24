@@ -25,6 +25,29 @@ import { DialogAddStockPolloComponent } from './pages/sucursales/dialog/dialog-a
 import { DialogAddTicketComponent } from './pages/sucursales/dialog/dialog-add-ticket/dialog-add-ticket.component';
 import { DashboarMockupExampleComponent } from './pages/dashboar-mockup-example/dashboar-mockup-example.component';
 import { DashboardAsistenciasComponent } from './pages/sucursales/dashboard-asistencias/dashboard-asistencias.component';
+import { DialogDetalleTareaComponent } from './pages/sucursales/dialog/dialog-detalle-tarea/dialog-detalle-tarea.component';
+import { DialogDetalleMesaEsperaComponent } from './pages/sucursales/dialog/dialog-detalle-mesa-espera/dialog-detalle-mesa-espera.component';
+import { DialogDetalleProductoRiesgoComponent } from './pages/sucursales/dialog/dialog-detalle-producto-riesgo/dialog-detalle-producto-riesgo.component';
+import { DialogDetallePolloPrecoccionComponent } from './pages/sucursales/dialog/dialog-detalle-pollo-precoccion/dialog-detalle-pollo-precoccion.component';
+import { DialogDetalleConteoPersonasComponent } from './pages/sucursales/dialog/dialog-detalle-conteo-personas/dialog-detalle-conteo-personas.component';
+import { DialogDetalleEncuestaComponent } from './pages/sucursales/dialog/dialog-detalle-encuesta/dialog-detalle-encuesta.component';
+import { DialogDetalleLimpiezaGeneralComponent } from './pages/sucursales/dialog/dialog-detalle-limpieza-general/dialog-detalle-limpieza-general.component';
+import { DialogDetalleEstacionSalonComponent } from './pages/sucursales/dialog/dialog-detalle-estacion-salon/dialog-detalle-estacion-salon.component';
+import { DialogDetalleTemperaturaBebidasSalonComponent } from './pages/sucursales/dialog/dialog-detalle-temperatura-bebidas-salon/dialog-detalle-temperatura-bebidas-salon.component';
+import { DialogDetalleAudioVideoSalonComponent } from './pages/sucursales/dialog/dialog-detalle-audio-video-salon/dialog-detalle-audio-video-salon.component';
+import { DialogDetalleFocosSalonComponent } from './pages/sucursales/dialog/dialog-detalle-focos-salon/dialog-detalle-focos-salon.component';
+import { DialogDetalleLimpiezaBarraSalonComponent } from './pages/sucursales/dialog/dialog-detalle-limpieza-barra-salon/dialog-detalle-limpieza-barra-salon.component';
+import { DialogDetalleRefrigeradoresSalonComponent } from './pages/sucursales/dialog/dialog-detalle-refrigeradores-salon/dialog-detalle-refrigeradores-salon.component';
+import { DialogDetalleEstadoGeneralBanosComponent } from './pages/sucursales/dialog/dialog-detalle-estado-general-banos/dialog-detalle-estado-general-banos.component';
+import { DialogDetalleLavabosJabonPapelBanosComponent } from './pages/sucursales/dialog/dialog-detalle-lavabos-jabon-papel-banos/dialog-detalle-lavabos-jabon-papel-banos.component';
+import { DialogDetalleTicketMesaSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-ticket-mesa-sistema/dialog-detalle-ticket-mesa-sistema.component';
+import { DialogDetalleEntradasAlbaranSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-entradas-albaran-sistema/dialog-detalle-entradas-albaran-sistema.component';
+import { DialogDetalleCocinaMantenimientoComponent } from './pages/sucursales/dialog/dialog-detalle-cocina-mantenimiento/dialog-detalle-cocina-mantenimiento.component';
+import { DialogDetalleSalonMantenimientoComponent } from './pages/sucursales/dialog/dialog-detalle-salon-mantenimiento/dialog-detalle-salon-mantenimiento.component';
+import { DialogDetalleBanosMantenimientoComponent } from './pages/sucursales/dialog/dialog-detalle-banos-mantenimiento/dialog-detalle-banos-mantenimiento.component';
+import { DialogDetalleBarraMantenimientoComponent } from './pages/sucursales/dialog/dialog-detalle-barra-mantenimiento/dialog-detalle-barra-mantenimiento.component';
+import { RegistroUsuarioComponent } from './pages/admon-user/registro-usuario/registro-usuario.component';
+import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-revision-mesa-sistema/dialog-detalle-revision-mesa-sistema.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +61,29 @@ import { DashboardAsistenciasComponent } from './pages/sucursales/dashboard-asis
     DialogAddTicketComponent,
     DashboarMockupExampleComponent,
     DashboardAsistenciasComponent,
+    DialogDetalleTareaComponent,
+    DialogDetalleMesaEsperaComponent,
+    DialogDetalleProductoRiesgoComponent,
+    DialogDetallePolloPrecoccionComponent,
+    DialogDetalleConteoPersonasComponent,
+    DialogDetalleEncuestaComponent,
+    DialogDetalleLimpiezaGeneralComponent,
+    DialogDetalleEstacionSalonComponent,
+    DialogDetalleTemperaturaBebidasSalonComponent,
+    DialogDetalleAudioVideoSalonComponent,
+    DialogDetalleFocosSalonComponent,
+    DialogDetalleLimpiezaBarraSalonComponent,
+    DialogDetalleRefrigeradoresSalonComponent,
+    DialogDetalleEstadoGeneralBanosComponent,
+    DialogDetalleLavabosJabonPapelBanosComponent,
+    DialogDetalleTicketMesaSistemaComponent,
+    DialogDetalleEntradasAlbaranSistemaComponent,
+    DialogDetalleCocinaMantenimientoComponent,
+    DialogDetalleSalonMantenimientoComponent,
+    DialogDetalleBanosMantenimientoComponent,
+    DialogDetalleBarraMantenimientoComponent,
+    RegistroUsuarioComponent,
+    DialogDetalleRevisionMesaSistemaComponent,
 
 
   ],

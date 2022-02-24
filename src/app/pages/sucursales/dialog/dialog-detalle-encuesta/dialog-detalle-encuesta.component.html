@@ -1,0 +1,95 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <label class="title" for="">Nombre</label>
+        <br />
+        <span>{{ data.data.name }}</span>
+      </div>
+      <div class="col-6 mb-2">
+        <label class="title" for="">Correo</label>
+        <br />
+        <span>{{ data.data.email }}</span>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionOne" type="checkbox" class="custom-control-input"
+            id="questionOne">
+          <label class="custom-control-label" for="questionOne">¿Habías visitado antes Rebel Wings?
+          </label>
+        </div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionTwo" type="checkbox" class="custom-control-input" id="questionTwo">
+          <label class="custom-control-label" for="questionTwo">¿Te sirvieron Chips de cortesía?
+          </label>
+        </div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionThree" type="checkbox" class="custom-control-input" id="questionThree">
+          <label class="custom-control-label" for="questionThree">¿Llegó tu comida caliente?
+          </label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionFour" type="checkbox" class="custom-control-input"
+            id="questionFour">
+          <label class="custom-control-label" for="questionFour">¿Llegó tu comida rápido?
+          </label>
+        </div>
+      </div>
+
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionFive" type="checkbox" class="custom-control-input" id="questionFive">
+          <label class="custom-control-label" for="questionFive">¿Llegaron rápido tus bebidas?
+          </label>
+        </div>
+      </div>
+      <div class="col-6 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.questionSix" type="checkbox" class="custom-control-input" id="questionSix">
+          <label class="custom-control-label" for="questionSix">¿Llegó tu pedido completo?
+          </label>
+        </div>
+      </div>
+      <div class="col-12 mb-2">
+        <label class="title" for="">¿Cómo calificarías tu experiencia en Rebel Wings?</label>
+        <br />
+        <span>{{ data.data.email }}</span>
+      </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>

@@ -138,7 +138,7 @@
     </div>
     <div class="col-12">
       <div class="tab-content" id="myTabContent">
-        <!-- cocina -->
+        <!-- cocina  1-->
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <table class="table">
             <thead class="thead-warning header_table">
@@ -162,13 +162,13 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- salon -->
+        <!-- salon 2-->
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <table class="table">
             <thead class="thead-warning header_table">
@@ -192,13 +192,13 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img   src="./assets/icon/ilustracion-ver.svg" *ngIf="item.detail !== 0" (click)="detail(item, 2)"  alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- baño -->
+        <!-- baño 3-->
         <div class="tab-pane fade" id="bano" role="tabpanel" aria-labelledby="bano-tab">
           <table class="table">
             <thead class="thead-warning header_table">
@@ -222,13 +222,13 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item,3)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- sistema y caja -->
+        <!-- sistema y caja  4-->
         <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="sistema-tab">
           <table class="table">
             <thead class="thead-warning header_table">
@@ -252,13 +252,13 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 4)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- mantenimiento -->
+        <!-- mantenimiento 5-->
         <div class="tab-pane fade" id="mantenimiento" role="tabpanel" aria-labelledby="mantenimiento-tab">
           <table class="table">
             <thead class="thead-warning header_table">
@@ -284,7 +284,7 @@
                     height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 5)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>

@@ -151,7 +151,7 @@
                   <img *ngIf="item.status === false" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img  src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
@@ -181,7 +181,7 @@
                   <img *ngIf="item.status === false" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 2)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>

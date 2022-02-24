@@ -1,0 +1,91 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row mb-4">
+      <!-- tvs -->
+      <div class="col-12">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.tvWorksProperly" type="checkbox" class="custom-control-input"
+            id="tvWorksProperly">
+          <label class="custom-control-label" for="tvWorksProperly">¿Funcionan de manera correcta todas las TVs en
+            piso?</label>
+        </div>
+      </div>
+      <div *ngIf="data.data.tvWorksProperly === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentTvWorksProperly }}</span>
+      </div>
+      <!-- bocinas -->
+      <div class="col-12">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.speakersWorkProperly" type="checkbox" class="custom-control-input"
+            id="speakersWorkProperly">
+          <label class="custom-control-label" for="speakersWorkProperly">¿Funcionan de manera correcta todas las bocinas en terraza?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.speakersWorkProperly === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentSpeakersWorkProperly }}</span>
+      </div>
+      <!-- tv terraza -->
+      <div class="col-12">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.terraceTvWorksProperly" type="checkbox" class="custom-control-input"
+            id="terraceTvWorksProperly">
+          <label class="custom-control-label" for="terraceTvWorksProperly">¿Funcionan de manera correcta todas las TVs en terraza?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.terraceTvWorksProperly === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentTerraceTvWorksProperly }}</span>
+      </div>
+
+      <!-- bocina terraza-->
+      <div class="col-12">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.terraceSpeakersWorkProperly" type="checkbox" class="custom-control-input"
+            id="terraceSpeakersWorkProperly">
+          <label class="custom-control-label" for="terraceSpeakersWorkProperly">¿Funcionan de manera correcta todas las bocinas en terraza?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.terraceSpeakersWorkProperly === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentTerraceSpeakersWorkProperly }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</div>
