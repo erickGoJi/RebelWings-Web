@@ -480,7 +480,7 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'ENTRADAS CARGADAS COMO ALBARÁN':
+        case 'ENTRADAS CARGADAS COMO ALBARÁN ':
           console.log('ENTRADAS CARGADAS COMO ALBARÁN');
           this.services
             .serviceGeneralGet(`EntriesChargedAsDeliveryNote/By-Id/${data.detail}`)

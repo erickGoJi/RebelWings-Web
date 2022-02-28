@@ -1,1 +1,81 @@
-<p>dialog-detalle-ticket-mesa-sistema works!</p>
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Alimentos en Mesa
+        </span>
+      </div>
+
+      <div class="col-12">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentFoodOnTable }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 1"  src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Ticket del Sistema
+        </span>
+      </div>
+
+      <div class="col-12">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentTicket }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <!-- <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
+      class="btn btn-danger btn-md">
+      Guardar
+    </button> -->
+  </div>
+</div>

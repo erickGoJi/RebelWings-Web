@@ -16,7 +16,7 @@ import { TareasComponent } from 'app/pages/sucursales/tareas/tareas.component';
 import { DasboardRegionalComponent } from 'app/pages/dasboard-regional/dasboard-regional.component';
 import { DasboardSupervisorComponent } from 'app/pages/dasboard-supervisor/dasboard-supervisor.component';
 import { DashboardAsistenciasComponent } from 'app/pages/sucursales/dashboard-asistencias/dashboard-asistencias.component';
-
+import { UsuariosComponent } from 'app/pages/admon-user/usuarios/usuarios.component';
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "regionales", component: DasboardRegionalComponent },
@@ -33,4 +33,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "mantenimiento", component: MantenimientoComponent },
   { path: "tarea", component: TareasComponent },
   { path: "asistencias", component: DashboardAsistenciasComponent},
+  { path: "usuarios", component: UsuariosComponent}
 ];

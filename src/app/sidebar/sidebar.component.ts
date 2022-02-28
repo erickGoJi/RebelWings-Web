@@ -41,7 +41,8 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: "/sucursales",
+    path: "/asistencias",
+    // path: "/sucursales",
     title: "Sucursales",
     icon: "sucursales-inactivo",
     class: "",
@@ -66,12 +67,18 @@ export const ROUTES: RouteInfo[] = [
         icon: "mantenimiento-inactivo",
         class: "",
       },
-      {
-        path: "/tarea",
-        title: "Tareas",
-        icon: "tareas-inactivo",
+       {
+         path: "/usuarios",
+        title: "Usuarios",
+         icon: "regional-inactivo",
         class: "",
       },
+      // {
+      //   path: "/tarea",
+      //   title: "Tareas",
+      //   icon: "tareas-inactivo",
+      //   class: "",
+      // },
     ],
   },
 

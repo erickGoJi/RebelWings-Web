@@ -34,6 +34,7 @@ export class TareasComponent implements OnInit {
       data: {
         id: id,
       },
+      width: '30rem',
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log("resp", result);

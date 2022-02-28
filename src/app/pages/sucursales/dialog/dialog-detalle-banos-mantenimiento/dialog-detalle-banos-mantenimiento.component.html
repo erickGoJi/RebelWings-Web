@@ -1,1 +1,134 @@
-<p>dialog-detalle-banos-mantenimiento works!</p>
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Mingitorios</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.urinals" type="checkbox" class="custom-control-input" id="urinals">
+          <label class="custom-control-label" for="urinals">¿Se encuentra en buen estado?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.urinals === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentUrinals }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.urinals === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Lavamanos -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Lavamanos</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.handWashBasin" type="checkbox" class="custom-control-input" id="handWashBasin">
+          <label class="custom-control-label" for="handWashBasin">¿Tienen fugas? ¿Funcionan correctamente?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.handWashBasin === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentHandWashBasin }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.handWashBasin === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Luminarias -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Luminarias</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.luminaires" type="checkbox" class="custom-control-input" id="luminaires">
+          <label class="custom-control-label" for="luminaires">¿Completos y funcionando?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentLuminaires }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Puertas -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Puertas</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.doors" type="checkbox" class="custom-control-input" id="doors">
+          <label class="custom-control-label" for="doors">¿En buen estado y funcionando?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.doors === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDoors }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.doors === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
+      class="btn btn-danger btn-md">
+      Guardar
+    </button> -->
+  </div>
+</div>

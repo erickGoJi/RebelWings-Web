@@ -48,6 +48,7 @@ import { DialogDetalleBanosMantenimientoComponent } from './pages/sucursales/dia
 import { DialogDetalleBarraMantenimientoComponent } from './pages/sucursales/dialog/dialog-detalle-barra-mantenimiento/dialog-detalle-barra-mantenimiento.component';
 import { RegistroUsuarioComponent } from './pages/admon-user/registro-usuario/registro-usuario.component';
 import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-revision-mesa-sistema/dialog-detalle-revision-mesa-sistema.component';
+import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/di
     DialogDetalleBarraMantenimientoComponent,
     RegistroUsuarioComponent,
     DialogDetalleRevisionMesaSistemaComponent,
+    UsuariosComponent,
 
 
   ],
