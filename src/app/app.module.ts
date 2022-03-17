@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from "ngx-toastr";
 import { HttpClientModule } from "@angular/common/http";
@@ -49,6 +49,7 @@ import { DialogDetalleBarraMantenimientoComponent } from './pages/sucursales/dia
 import { RegistroUsuarioComponent } from './pages/admon-user/registro-usuario/registro-usuario.component';
 import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-revision-mesa-sistema/dialog-detalle-revision-mesa-sistema.component';
 import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.component';
+import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-change-password/dialog-change-password.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.componen
     RegistroUsuarioComponent,
     DialogDetalleRevisionMesaSistemaComponent,
     UsuariosComponent,
+    DialogChangePasswordComponent,
 
 
   ],
@@ -100,6 +102,7 @@ import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.componen
     FooterModule,
     FixedPluginModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
     MatDialogModule

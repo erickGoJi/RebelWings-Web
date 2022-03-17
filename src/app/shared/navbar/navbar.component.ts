@@ -108,4 +108,10 @@ export class NavbarComponent implements OnInit {
       navbar.classList.remove("bg-white");
     }
   }
+  logout() {
+    console.log('cerrar session');
+    localStorage.removeItem('userData');
+    this.router.navigateByUrl('login');
+
+  }
 }

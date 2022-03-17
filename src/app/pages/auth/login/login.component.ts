@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
     public router: Router,
     public service: LoginService,
     public _dialog: MatDialog
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   forgotPassword() {
     console.log("forgot password");
     this.router.navigateByUrl("recuperar-contrasena");
@@ -46,12 +46,22 @@ export class LoginComponent implements OnInit {
       (resp) => {
         if (resp.success) {
           this.dataProfile = resp.result;
-          // this.load.presentLoading("Iniciando sesion..");
           console.log("data profile", this.dataProfile);
           this.disabled = false;
           localStorage.setItem("userData", JSON.stringify(this.dataProfile));
-
-          this.router.navigateByUrl("bienvenido");
+          // solo ingresaran los usuarios de tipo id 3
+          if (this.dataProfile.roleId !== 3) {
+            const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
+              data: {
+                header: "Error",
+                body: "No tienes permisos para acceder como Administrador",
+              },
+              width: "250px",
+            });
+          }
+          else {
+            this.router.navigateByUrl("bienvenido");
+          }
         } else {
           console.log("data error", resp);
           this.disabled = false;
@@ -60,7 +70,7 @@ export class LoginComponent implements OnInit {
               header: "Error",
               body: resp.message,
             },
-            width: "350px",
+            width: "250px",
           });
 
           // this.generalMessage(resp.message);

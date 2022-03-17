@@ -1,15 +1,16 @@
 .title {
   color: #ad182d;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .align-center {
   align-self: center;
 }
-.img-size{
+.img-size {
   width: 45%;
 }
-.img-size-min{
+.img-size-min {
   width: 12%;
 }
 .date-grey {
@@ -21,4 +22,7 @@
   font-weight: bold;
   font-size: large;
   margin: 0;
+}
+.end{
+  text-align: end;
 }
