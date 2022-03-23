@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
   public today = new Date();
   public dateDash = new Date();
   public dateFormat;
+  public graficActivityLabel;
 
   constructor(public services: ServiceGeneralService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
   }
@@ -72,9 +73,9 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
   getGrafica() {
     console.log('data grafica');
-
     // estructura de data  omiciones
     this.canvas = document.getElementById("branchOmision");
     this.ctx = this.canvas.getContext("2d");
@@ -99,26 +100,30 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: graficOmisionLabel,
         datasets: [{
+          barPercentage: 1,
+          label: 'Porcentaje de omision',
           borderColor: "#ff5353",
-          backgroundColor: "#ff5353",
-          pointRadius: 0,
+          backgroundColor: "rgba(255, 83, 83, 0.2)",
+          borderWidth: 1,
+          minBarLength: 0,
           pointHoverRadius: 0,
-          borderWidth: 3,
           data: graficOmisionData,
         }],
       },
-      options: options
-    });
+      options: {
+        scales: {
+          y: {
 
-    var options = {
-      scales: {
-        xAxes: [{
-          gridLines: {
-            offsetGridLines: true
+            beginAtZero: true
+
           }
-        }]
+        }
       }
-    }
+    });
+    // pointRadius: 0,
+
+
+
     // grafica con actividades mas omitidas
     this.canvas = document.getElementById("activityOmision");
     this.ctxActivity = this.canvas.getContext("2d");
@@ -130,26 +135,25 @@ export class DashboardComponent implements OnInit {
         data.percentage
       );
     });
-    console.table("graficActivityData", graficActivityData);
-    const graficActivityLabel = [];
+    this.graficActivityLabel = [];
     this.data.mostOmittedActivitiesCollection.forEach(data => {
-      graficActivityLabel.push(
+      this.graficActivityLabel.push(
         data.name
       );
     });
-    console.table("graficActivityLabel", graficActivityLabel);
+    console.table("actividades mas omitidas", graficActivityData);
+    console.table("graficActivityLabel", this.graficActivityLabel);
 
     this.activityOmision = new Chart(this.ctxActivity, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
-        labels: graficActivityLabel,
+        labels: this.graficActivityLabel,
         datasets: [{
-          label: "Emails",
-          pointRadius: 0,
-          pointHoverRadius: 0,
+          label: "Actividades omitidas",
+          hoverOffset: 4,
           backgroundColor: [
-            '#e3e3e3',
             '#4acccd',
+            '#e3e3e3',
             '#fcc468',
             '#ef8157'
           ],
@@ -157,48 +161,16 @@ export class DashboardComponent implements OnInit {
           data: graficActivityData
         }]
       },
-
       options: {
-
-        legend: {
-          display: false
-        },
-
-        pieceLabel: {
-          render: 'percentage',
-          fontColor: ['white'],
-          precision: 2
-        },
-
-        tooltips: {
-          enabled: false
-        },
-
-        scales: {
-          yAxes: [{
-
-            ticks: {
-              display: false
-            },
-            gridLines: {
-              drawBorder: false,
-              zeroLineColor: "transparent",
-              color: 'rgba(255,255,255,0.05)'
-            }
-
-          }],
-
-          xAxes: [{
-            barPercentage: 1.6,
-            gridLines: {
-              drawBorder: false,
-              color: 'rgba(255,255,255,0.1)',
-              zeroLineColor: "transparent"
-            },
-            ticks: {
-              display: false,
-            }
-          }]
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: '% actividades omitidas'
+          }
         },
       }
     });

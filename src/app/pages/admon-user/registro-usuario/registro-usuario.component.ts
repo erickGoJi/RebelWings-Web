@@ -125,6 +125,7 @@ export class RegistroUsuarioComponent implements OnInit {
     if (this.param.id === 0) {
       this.data.clabTrab = 0;
       this.data.token = "";
+      this.data.password = "admin123";
       if (this.data.roleId !== 1) {
         this.data.branchId = null;
       }

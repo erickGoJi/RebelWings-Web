@@ -128,22 +128,20 @@
 
 <div class="row"  >
   <!--------------actividades mas omitidas----------------->
-  <div class="col-12 col-md-6" >
-    <div class="card ">
+  <div class="col-12 col-md-6 " >
+    <div class="card my-4">
       <div class="card-header ">
         <h5 class="card-title">ACTIVIDADES MÁS OMITIDAS</h5>
       </div>
-      <div class="card-body ">
+      <div class="card-body">
         <canvas id="activityOmision"></canvas>
       </div>
-      <div class="card-footer ">
-        <div class="legend">
-          <i class="fa fa-circle text-primary"></i> Actividad 1
-          <i class="fa fa-circle text-warning"></i> Actividad 2
-          <i class="fa fa-circle text-danger"></i> Actividad 3
-          <i class="fa fa-circle text-gray"></i> Actividad 4
+      <!-- <div class="card-footer ">
+        <div class="legend" *ngFor="let item of graficActivityLabel" >
+          <i class="fa fa-circle text-primary"></i>  {{item}}
+
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-----------------omisiones por turno-------------------->
