@@ -1,0 +1,98 @@
+<!-- <div class="main"> -->
+<div class="justify">
+  <div class="row">
+    <!-- logo -->
+    <div class="col-12">
+      <div class="logo">
+        <img
+          class="rebel-img"
+          src="./assets/RW_LogoWEB.png"
+          alt="Rebel wings"
+        />
+      </div>
+    </div>
+    <!-- titulo -->
+    <div class="col-12">
+      <div class="logo">
+        <br />
+        <h3 class="title-admon">ADMINISTRADOR</h3>
+      </div>
+    </div>
+  </div>
+  <!-- inputs -->
+  <div class="row justify-content-center">
+    <div class="login col-8">
+      <label for="">Correo electrónico</label>
+      <div class="input-group mb-3">
+        <input
+          type="email"
+          autocomplete="ÑÖcompletes"
+          [(ngModel)]="email"
+          class="form-control"
+          placeholder="Ingresa tu usuario"
+          aria-label="Ingresa tu usuario"
+          aria-describedby="basic-addon2"
+        />
+        <div class="input-group-append">
+          ,
+          <span class="input-group-text">
+            <!-- mail -->
+            <i class="bi bi-envelope text-danger" style="cursor: pointer;"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="login col-8">
+      <label for="">Contraseña</label>
+      <div class="input-group mb-3">
+        <input
+          type="{{ typeInput }}"
+          autocomplete="ÑÖcompletes"
+          [(ngModel)]="password"
+          class="form-control"
+          placeholder="Ingresa tu contraseña"
+          aria-describedby="basic-addon2"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <!-- key -->
+            <i class="bi bi-key text-danger" *ngIf="password == '' || password == undefined" style="cursor: pointer;"></i>
+            <!-- on eye  -->
+            <i class="bi bi-eye text-danger" *ngIf="(password !== '' && password !== undefined) && eyed === false" (click)="viewPassword(true)" style="cursor: pointer;"></i>
+            <!-- off eye -->
+            <i class="bi bi-eye-slash text-danger" *ngIf="(password !== '' && password !== undefined) && eyed === true" (click)="viewPassword(false)" style="cursor: pointer;"></i>
+
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+          <div
+            class="puntero"
+            (click)="forgotPassword()"
+            class="forgot-password"
+          >
+            <span>RECUPERAR CONTRASEÑA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="login col-8">
+      <div class="logo">
+        <button
+          type="button"
+          [disabled]="email == '' || password == '' || disabled == true"
+          class="btn btn-danger btn-block"
+          (click)="login(email, password)"
+        >
+          INICIAR SESIÓN
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

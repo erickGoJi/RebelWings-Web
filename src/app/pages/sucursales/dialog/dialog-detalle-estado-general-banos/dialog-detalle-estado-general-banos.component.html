@@ -1,0 +1,101 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <!-- nujeres -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Baños de mujeres
+        </span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.doesAnyBathroomLeakWomen" type="checkbox" class="custom-control-input"
+            id="doesAnyBathroomLeakWomen">
+          <label class="custom-control-label" for="doesAnyBathroomLeakWomen">¿Algún baño tiene gotera?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.doesAnyBathroomLeakWomen === false"  class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDoesAnyBathroomLeakWomen }}</span>
+      </div>
+
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.isThereAnyFaultsWomen" type="checkbox" class="custom-control-input"
+            id="isThereAnyFaultsWomen">
+          <label class="custom-control-label" for="isThereAnyFaultsWomen">¿Hay alguna falla en las chapas?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.isThereAnyFaultsWomen === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentAreThereAnyFaultsWomen }}</span>
+      </div>
+    </div>
+    <!-- hombres -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Baños de hombres
+        </span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.doesAnyBathroomLeakMen" type="checkbox" class="custom-control-input"
+            id="doesAnyBathroomLeakMen">
+          <label class="custom-control-label" for="doesAnyBathroomLeakMen">¿Algún baño tiene gotera?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.doesAnyBathroomLeakMen === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDoesAnyBathroomLeakMen }}</span>
+      </div>
+
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.isThereAnyFaultsMen" type="checkbox" class="custom-control-input"
+            id="isThereAnyFaultsMen">
+          <label class="custom-control-label" for="isThereAnyFaultsMen">¿Hay alguna falla en las chapas?
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data.data.isThereAnyFaultsMen === false" class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentAreThereAnyFaultsMen }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+  </div>
+</div>

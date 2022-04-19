@@ -1,0 +1,193 @@
+<div class="container">
+  <!-- header -->
+  <div class="row">
+    <div class="col-md-1 align-center">
+      <img class="img-fluid" src="./assets/icon/ilustracion-supervisores.png" alt="" />
+    </div>
+    <div class="col-md-11 align-center">
+      <h4 class="title align-center">SUPERVISORES</h4>
+    </div>
+  </div>
+  <!-- filtros -->
+  <div class="row my-4">
+    <div class="col-md-6 align-center">
+      <h4 class="subtitle-negro">INFORME DE ACTIVIDAD</h4>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
+        <label class="non-margin" for="Sucursal">Sucursal</label>
+        <select (change)="getDataDash(sucursal, dateDash)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
+          <option [value]="item.branchId" *ngFor="let item of dataBranch">{{item.branchName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
+        <label for="fechaInicial">Fecha</label>
+        <div class="input-group">
+          <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
+            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash)" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- informacion sucursal y fechas -->
+  <div class="row my-4" *ngIf="data">
+    <div class="col-4 col-md-1 col-sm-4 align-center">
+      <img class="img-fluid" src="./assets/icon/sucursal.png" alt="" />
+    </div>
+    <div class="col-8 col-md-3 col-sm-8 align-center">
+      <h5 class="subtitle-negro">SUCURSAL {{nameBranch}}</h5>
+    </div>
+    <div class="col-12 col-md-4 col-sm-12 align-center">
+      <span class="date-grey">
+        {{ dateDash | date: "dd MMM yyy" }}
+      </span>
+    </div>
+    <div class="col-4 align-center">
+    </div>
+  </div>
+
+  <!-- tarjetas de informacion -->
+  <div class="row my-4" *ngIf="data" >
+    <!-- omision -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>Omisión de Actividades</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">{{data.omissionsActivities | number : '.1-2'}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ticket -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>Tickets levantados</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">{{data.tickets}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ticket -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>Promedio de asistencias</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">
+                  {{data.averageAttendance | number: '.1-2' }}%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- menu seccionado -->
+  <div class="row my4" *ngIf="data" >
+    <div class="col-12">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item cocina-ul">
+          <a class="nav-link px-5 active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">MATUTINO</a>
+        </li>
+        <li class="nav-item cocina-ul">
+          <a class="nav-link px-5" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">VESPERTINO</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-12">
+      <div class="tab-content" id="myTabContent">
+        <!-- MATUTINO -->
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <table class="table">
+            <thead class="thead-warning header_table">
+              <tr>
+                <th scope="col">Nombre de la tarea</th>
+                <th scope="col">Supervisor asignado</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Porcentaje completado</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data.tasksMorningsCollection" >
+                <th scope="row">{{item.nameTask}}</th>
+                <td>{{item.supervisor}}</td>
+                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{item.percentageComplete | number: '.1-2'}}%</td>
+                <td>
+                  <img *ngIf="item.status === true"  src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.status === false" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
+                </td>
+                <td>
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- VESPERTINO -->
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <table class="table">
+            <thead class="thead-warning header_table">
+              <tr>
+                <th scope="col">Nombre de la tarea</th>
+                <th scope="col">Supervisor asignado</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Porcentaje completado</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data.tasksEveningsCollection">
+                <th scope="row">{{item.nameTask}}</th>
+                <td>{{item.supervisor}}</td>
+                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{item.percentageComplete | number: '.1-2'}}%</td>
+                <td>
+                  <img *ngIf="item.status === true" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.status === false" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
+                </td>
+                <td>
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 2)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

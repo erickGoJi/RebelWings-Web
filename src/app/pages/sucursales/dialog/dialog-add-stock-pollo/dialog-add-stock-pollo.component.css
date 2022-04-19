@@ -1,0 +1,15 @@
+.title{
+  font-weight: bold;
+  margin: 0;
+}
+.subtitle {
+  color: #1d1d1b;
+  font-weight: bold;
+  font-size: large;
+  align-self: center;
+}
+.align-btn{
+	align-content: end;
+	text-align: end;
+}
+

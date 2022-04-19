@@ -1,0 +1,88 @@
+<!-- <div class="modal" tabindex="-1" *ngIf="data"> -->
+<!-- <div class="modal-dialog modal-dialog-centered " *ngIf="data"> -->
+<div class="container" tabindex="-1" *ngIf="data">
+
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">TICKET LEVANTADO</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 class="titleSucursal">TICKET {{data.noTicket}}</h3>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="turno">Estatus</label>
+          <select [(ngModel)]="status" class="form-control" id="turno">
+            <option [value]="true">Abierto</option>
+            <option [value]="false">Cerrado</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="cost">Costo</label>
+          <input id="cost" type="number" [(ngModel)]="data.cost" class="form-control" placeholder="$ MXN" />
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <label class="title" for="">Parte de la sucursal</label>
+        <br />
+        <span>{{ data.whereAreYouLocatedNavigation?.locate }}</span>
+      </div>
+      <div class="col-6">
+        <label class="title" for="">Sección específica</label>
+        <br />
+        <span>{{ data.specificLocation }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Descripción del problema</label>
+        <br />
+        <span>{{ data.describeProblem }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photoTicketings; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <div class="row"> -->
+    <!-- <div class="col-12"> -->
+    <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
+      class="btn btn-danger btn-md">
+      Guardar
+    </button>
+    <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+<!-- </div> -->
+<!-- </div> -->

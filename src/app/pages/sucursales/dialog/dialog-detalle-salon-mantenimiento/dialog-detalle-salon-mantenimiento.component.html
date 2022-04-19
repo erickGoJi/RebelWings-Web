@@ -1,0 +1,241 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Puertas de acceso</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.accessDoors" type="checkbox" class="custom-control-input" id="accessDoors">
+          <label class="custom-control-label" for="accessDoors">¿Existe algún descuadre?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.accessDoors === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentAccessDoors }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.accessDoors === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Chapas -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Chapas</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.badges" type="checkbox" class="custom-control-input" id="badges">
+          <label class="custom-control-label" for="badges">¿Funcionan correctamente?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.badges === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentBadges }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.badges === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Luminarias -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Luminarias</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.luminaires" type="checkbox" class="custom-control-input" id="luminaires">
+          <label class="custom-control-label" for="luminaires">¿Fijas con trampas de olor y tornillería?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentLuminaires }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contactos y apagadores -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Contactos y apagadores</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.switches" type="checkbox" class="custom-control-input" id="switches">
+          <label class="custom-control-label" for="switches">¿Completos y funcionando?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.switches === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentSwitches }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.switches === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobiliario -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Mobiliario</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.furnitureOne" type="checkbox" class="custom-control-input" id="furnitureOne">
+          <label class="custom-control-label" for="furnitureOne">¿Las mesas están fijas a su base y niveladas?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.furnitureOne === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentFurnitureOne }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.furnitureOne === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 5" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobiliario -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Mobiliario</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.furnitureTwo" type="checkbox" class="custom-control-input"
+            id="furnitureTwo">
+          <label class="custom-control-label" for="furnitureTwo">¿Sillas en buen estado? ¿Tienen sus gomas completas?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.furnitureTwo === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentFurnitureTwo }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.furnitureTwo === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 6" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Boths -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Boths</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.boths" type="checkbox" class="custom-control-input"
+            id="boths">
+          <label class="custom-control-label" for="boths">¿En buen estado?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.boths === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentBoths }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.boths === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 7" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extintores -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Extintores</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.fireExtinguishers" type="checkbox" class="custom-control-input" id="fireExtinguishers">
+          <label class="custom-control-label" for="fireExtinguishers">¿Tienen la presión correcta?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.fireExtinguishers === false">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentFireExtinguishers }}</span>
+      </div>
+      <div class="col-12 mb-2" *ngIf="data.data.fireExtinguishers === false">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 8" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <!-- <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
+      class="btn btn-danger btn-md">
+      Guardar
+    </button> -->
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Chope clara</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.lightBeer" type="checkbox" class="custom-control-input"
+            id="lightBeer">
+          <label class="custom-control-label" for="lightBeer">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Chope oscura  -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Chope oscura</span>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.darkBeer" type="checkbox" class="custom-control-input" id="darkBeer">
+          <label class="custom-control-label" for="darkBeer">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Elige 5 bebidas aleatorias  -->
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <span>Elige 5 bebidas aleatorias</span>
+      </div>
+      <div class="col-4 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.drinkOne" type="checkbox" class="custom-control-input" id="drinkOne">
+          <label class="custom-control-label" for="drinkOne">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-4 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.drinkTwo" type="checkbox" class="custom-control-input" id="drinkTwo">
+          <label class="custom-control-label" for="drinkTwo">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-4 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.drinkThree" type="checkbox" class="custom-control-input" id="drinkThree">
+          <label class="custom-control-label" for="drinkThree">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-4 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.drinkFour" type="checkbox" class="custom-control-input" id="drinkFour">
+          <label class="custom-control-label" for="drinkFour">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-4 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.drinkFive" type="checkbox" class="custom-control-input" id="drinkFive">
+          <label class="custom-control-label" for="drinkFive">¿Fría?</label>
+        </div>
+      </div>
+      <div class="col-4 mb-2"></div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>

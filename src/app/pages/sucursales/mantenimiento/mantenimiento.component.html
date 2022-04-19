@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row" id="idscroll">
+    <div class="col-3 col-md-1 align-center">
+      <img class="img-fluid" src="./assets/icon/ilustracion-mantenimiento.png" alt="" />
+    </div>
+    <div class="col-9 col-md-11 align-center">
+      <h4 class="title align-center">MANTENIMIENTO</h4>
+    </div>
+    <!-- title -->
+    <div class="col-12 my-2">
+      <div class="row">
+        <div class="col-7 col-md-3 align-center">
+          <h5 class="subtitle-negro">TICKETS LEVANTADOS</h5>
+        </div>
+        <div class="col-5 col-md-3 align-center">
+          <span class="date-grey">
+            {{ today | date: "dd MMM yyy" }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- filtros -->
+    <div class="col-12 my-2">
+      <div class="row">
+
+        <div class="col-12 col-md-4 align-center">
+          <div class="form-group">
+            <label class="non-margin" for="Sucursal">Sucursal</label>
+            <select (change)="getDataDash(sucursal, dateDash, dateDash2)" [(ngModel)]="sucursal" class="form-control"
+              id="Sucursal">
+              <option [value]="item.branchId" *ngFor="let item of dataBranch">{{item.branchName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-5 col-md-3 align-center">
+          <div class="form-group">
+            <label for="fechaInicial">Fecha Inicio</label>
+            <div class="input-group">
+              <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+                placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
+                (ngModelChange)="getDataDash(sucursal, dateDash, dateDash2)" />
+            </div>
+          </div>
+        </div>
+        <div class="col-5 col-md-3 align-center">
+          <div class="form-group">
+            <label for="fechaInicial">Fecha Final</label>
+            <div class="input-group">
+              <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+                placeholder="yyyy-mm-dd" [(ngModel)]="dateDash2"
+                (ngModelChange)="getDataDash(sucursal, dateDash, dateDash2)" />
+            </div>
+          </div>
+        </div>
+        <div class="col-2 align-center">
+          <h4>
+            <i style=" color: #cf3c4f;" color="danger" (click)="ngOnInit()" class="bi bi-arrow-repeat"></i>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row my-3" tabindex="0">
+    <div class="col-12">
+      <table class="table table-hover col-12" >
+        <thead>
+          <tr>
+            <th scope="col-3">Sucursal</th>
+            <th scope="col-2">Regional</th>
+            <th scope="col-2">Tipo</th>
+            <th scope="col-2">Abierto</th>
+            <th scope="col-2">Cerrado</th>
+            <th scope="col-1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" (click)="addTicket(item.id)">
+            <td class="col-3">
+              <div class="row">
+                <div class="col-3">
+                  <img width="100%" src="./assets/icon/sucursal.png" alt="" />
+                </div>
+                <div class="col-9">
+                  <span>Sucursal {{item.branch}} <i class="cc cc-by-nc-jp"></i></span>
+                </div>
+              </div>
+            </td>
+            <td class="col-2">{{ item.regional }}</td>
+            <td class="col-2">{{item.category}}</td>
+            <td class="col-2">{{ item.opened | date: "dd MMM yyy"}}</td>
+            <td class="col-2" *ngIf="item.closed != null">{{ item.closed | date: "dd MMM yyy" }}</td>
+            <td class="col-2" *ngIf="item.closed == null">--</td>
+            <td class="col-1">
+              <img width="70%" *ngIf="item.closed == null" src="./assets/icon/icon-lleg-con-problemas.png" alt="" />
+              <img width="70%" *ngIf="item.closed != null" src="./assets/icon/icon_asisti.png" alt="" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
