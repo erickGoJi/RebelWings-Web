@@ -20,6 +20,8 @@ export class RegistroUsuarioComponent implements OnInit {
   public sucursal;
   public nameBranch;
   public today = new Date();
+  public catalogState: any[] = [];
+  public catalogSucursal: any[] = [];
   enctexto;
 
   destexto;
@@ -34,13 +36,12 @@ export class RegistroUsuarioComponent implements OnInit {
     public _dialog: MatDialog
   ) { }
 
-
-
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('params', this.param);
     console.log('user', this.user);
-    this.getdataBranch();
+    this.catalogs();
+    // this.getdataBranch();
     if (this.param.id === 0) {
       console.log('Crear usuario');
 
@@ -50,9 +51,35 @@ export class RegistroUsuarioComponent implements OnInit {
       this.getData();
     }
   }
+
   close() {
     this.dialogRef.close();
   }
+
+  catalogs() {
+    this.services
+      .serviceGeneralGet(`User/GetStateList`)
+      .subscribe((resp) => {
+        if (resp.success) {
+          resp.result.forEach(element => {
+            if (element.status == true) {
+              this.catalogState.push(element);
+            }
+          });
+          console.log("catalogState ", this.catalogState);
+        }
+      });
+  }
+  getCatalogSucursal(id) {
+    console.log('entra', id);
+    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catalogSucursal = resp.result;
+        console.log("catalogSucursal ", this.catalogSucursal);
+      }
+    });
+  }
+
   getData() {
     this.services
       .serviceGeneralGet(`User/${this.param.id}`)
@@ -60,20 +87,21 @@ export class RegistroUsuarioComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log("resp", this.data);
+          this.getCatalogSucursal(this.data.sucursalId);
         }
       });
   }
 
-  getdataBranch() {
-    this.services
-      .serviceGeneralGet("StockChicken/Admin/All-Branch")
-      .subscribe((resp) => {
-        if (resp.success) {
-          this.dataBranch = resp.result;
-          console.log("resp", this.dataBranch);
-        }
-      });
-  }
+  // getdataBranch() {
+  //   this.services
+  //     .serviceGeneralGet("StockChicken/Admin/All-Branch")
+  //     .subscribe((resp) => {
+  //       if (resp.success) {
+  //         this.dataBranch = resp.result;
+  //         console.log("resp", this.dataBranch);
+  //       }
+  //     });
+  // }
 
   changePass(correo: number) {
     console.log('correo', correo);
@@ -182,6 +210,8 @@ class UserModel {
   lastName: string;
   motherName: string;
   roleId: number;
+  stateId: number;
+  sucursalId: number;
   branchId: number;
   createdBy: number;
   createdDate: Date;

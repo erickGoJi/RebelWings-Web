@@ -1,0 +1,84 @@
+<div class="container" tabindex="-1" *ngIf="data">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-10">
+        <h4 class="title">{{data.name}}</h4>
+      </div>
+      <div class="col-2 align-btn">
+        <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-body scroll" data-bs-spy="scroll">
+    <div class="row mb-4">
+      <div class="col-2">
+        <img src="./assets/icon/sucursal.png" alt="" />
+      </div>
+      <div class="col-10 subtitle">
+        <span>Sucursal {{ nameBranch }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-4">
+        <span>Hora de Alarma</span>
+        &nbsp;
+        <span class="date-grey ">{{data.data.createdDate }}</span>
+      </div>
+      <div class="col-4">
+        <span>Hora de Registro</span>
+        &nbsp;
+        <span class="date-grey ">{{data.data.createdDate }}</span>
+      </div>
+      <div class="col-4">
+        <span>Tiempo transfurrido</span>
+        &nbsp;
+        <span class="date-grey ">{{data.data.createdDate }}</span>
+      </div>
+    </div>
+    <!-- este solo es para cantidaddes -->
+    <div *ngIf="data.data.amount" class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Cantidad</label>
+        <br />
+        <span>{{ data.data.amount }}</span>
+      </div>
+    </div>
+    <!-- averageTime -->
+    <div *ngIf="data.data.averageTime" class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Tiempo</label>
+        <br />
+        <span>{{ data.data.averageTime }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.comment }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
+      class="btn btn-danger btn-md">
+      Guardar
+    </button> -->
+  </div>
+</div>

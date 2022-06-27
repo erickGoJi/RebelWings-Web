@@ -15,8 +15,7 @@
       <h4 class="subtitle-negro align-center">INFORMACIÓN</h4>
     </div>
     <div class="col-3">
-      <button (click)="save()" style="background-color: #d0122d; border-radius: 16px" type="button"
-        class="btn">
+      <button (click)="save()" style="background-color: #d0122d; border-radius: 16px" type="button" class="btn">
         GUARDAR
       </button>
     </div>
@@ -50,6 +49,13 @@
       </div>
       <div class="col-6">
         <div class="form-group">
+          <label for="email">Correo</label>
+          <input required type="email" class="form-control" id="email" placeholder="Correo" [(ngModel)]="data.email" />
+        </div>
+        <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeNombre">Campo requerido</span> -->
+      </div>
+      <div class="col-6">
+        <div class="form-group">
           <label for="turno">Rol</label>
           <select type="number" [(ngModel)]="data.roleId" class="form-control" id="turno" (focus)="activeTurno = false"
             required>
@@ -63,15 +69,29 @@
       </div>
       <div class="col-6">
         <div class="form-group">
-          <label for="email">Correo</label>
-          <input required type="email" class="form-control" id="email" placeholder="Correo" [(ngModel)]="data.email" />
+          <label for="estado">Estado</label>
+          <select type="number" [(ngModel)]="data.stateId" class="form-control" id="estado" required
+            (ngModelChange)="getCatalogSucursal(data.stateId)">
+            <option *ngFor="let item of catalogState" [value]="item.id">{{item.state}}</option>
+          </select>
         </div>
-        <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeNombre">Campo requerido</span> -->
+        <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span> -->
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="sucursalStarte">Sucursal</label>
+          <select [disabled]="data.stateId == undefined" type="number" [(ngModel)]="data.sucursalId"
+            class="form-control" id="sucursalStarte" required>
+            <option *ngFor="let item of catalogSucursal" [value]="item.idfront">{{item.titulo}}</option>
+          </select>
+        </div>
+        <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span> -->
       </div>
 
 
+
       <!-- sucursal -->
-      <div class="col-6" *ngIf="data.roleId === 1">
+      <!-- <div class="col-6" *ngIf="data.roleId === 1">
         <div class="form-group">
           <label for="sucursal">Sucursal</label>
           <select class="form-control" id="sucursal" (focus)="activeSucursal = false" required
@@ -79,9 +99,9 @@
             <option *ngFor="let item of dataBranch" [value]="item.branchId">{{ item.branchName}}</option>
           </select>
         </div>
-        <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeSucursal">Campo requerido</span> -->
-      </div>
-      <div *ngIf="param.id !== 0"   class="col-12" class="title align-center my-3">
+        <span style="color: #ad182d; font-size: 12px" *ngIf="activeSucursal">Campo requerido</span>
+      </div> -->
+      <div *ngIf="param.id !== 0" class="col-12" class="title align-center my-3">
         <span (click)="changePass(data.email)">Cambiar Contraseña</span>
       </div>
 

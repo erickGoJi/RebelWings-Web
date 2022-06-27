@@ -4,6 +4,7 @@ import { DialogDetalleTareaComponent } from '../sucursales/dialog/dialog-detalle
 import { DialogDetalleMesaEsperaComponent } from '../sucursales/dialog/dialog-detalle-mesa-espera/dialog-detalle-mesa-espera.component';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DialogDetalleProductoRiesgoComponent } from '../sucursales/dialog/dialog-detalle-producto-riesgo/dialog-detalle-producto-riesgo.component';
+import { DialogVoladoEfectivoComponent } from '../sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
 
 
 @Component({
@@ -286,11 +287,12 @@ export class DasboardSupervisorComponent implements OnInit {
                 this.dataTask = resp.result;
                 this.photosTemp = this.dataTask.photoCashRegisterShortages;
                 console.log('get data', this.dataTask);
-                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                const dialog = this.dialog.open(DialogVoladoEfectivoComponent, {
                   data: {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+
                   },
                   width: "30rem",
                 });
