@@ -78,7 +78,7 @@
         <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span> -->
       </div>
       <div class="col-6">
-        <div class="form-group">
+        <div class="form-group" *ngIf="data.roleId === 1">
           <label for="sucursalStarte">Sucursal</label>
           <select [disabled]="data.stateId == undefined" type="number" [(ngModel)]="data.sucursalId"
             class="form-control" id="sucursalStarte" required>
@@ -87,21 +87,7 @@
         </div>
         <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span> -->
       </div>
-
-
-
-      <!-- sucursal -->
-      <!-- <div class="col-6" *ngIf="data.roleId === 1">
-        <div class="form-group">
-          <label for="sucursal">Sucursal</label>
-          <select class="form-control" id="sucursal" (focus)="activeSucursal = false" required
-            [(ngModel)]="data.branchId">
-            <option *ngFor="let item of dataBranch" [value]="item.branchId">{{ item.branchName}}</option>
-          </select>
-        </div>
-        <span style="color: #ad182d; font-size: 12px" *ngIf="activeSucursal">Campo requerido</span>
-      </div> -->
-      <div *ngIf="param.id !== 0" class="col-12" class="title align-center my-3">
+      <div *ngIf="param.id !== 0" class="col-12" class="title align-end my-3">
         <span (click)="changePass(data.email)">Cambiar Contraseña</span>
       </div>
 

@@ -22,17 +22,25 @@
     <!-- filtros -->
     <div class="col-12 my-2">
       <div class="row">
-
-        <div class="col-12 col-md-4 align-center">
+        <div class="col-6 col-md-3 align-center">
           <div class="form-group">
-            <label class="non-margin" for="Sucursal">Sucursal</label>
-            <select (change)="getDataDash(sucursal, dateDash, dateDash2)" [(ngModel)]="sucursal" class="form-control"
-              id="Sucursal">
-              <option [value]="item.branchId" *ngFor="let item of dataBranch">{{item.branchName}}</option>
+            <label class="non-margin" for="Ciudad">Ciudad</label>
+            <select (change)="getdataSucursal(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+              <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
             </select>
           </div>
         </div>
-        <div class="col-5 col-md-3 align-center">
+
+        <div class="col-6 col-md-3 align-center">
+          <div class="form-group">
+            <label class="non-margin" for="Sucursal">Sucursal</label>
+            <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDash2)" [(ngModel)]="sucursal" class="form-control"
+              id="Sucursal">
+              <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-5 col-md-2 align-center">
           <div class="form-group">
             <label for="fechaInicial">Fecha Inicio</label>
             <div class="input-group">
@@ -42,11 +50,11 @@
             </div>
           </div>
         </div>
-        <div class="col-5 col-md-3 align-center">
+        <div class="col-5 col-md-2 align-center">
           <div class="form-group">
-            <label for="fechaInicial">Fecha Final</label>
+            <label for="fechaFinal">Fecha Final</label>
             <div class="input-group">
-              <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+              <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                 placeholder="yyyy-mm-dd" [(ngModel)]="dateDash2"
                 (ngModelChange)="getDataDash(sucursal, dateDash, dateDash2)" />
             </div>

@@ -29,12 +29,16 @@ export class DasboardSupervisorComponent implements OnInit {
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
+  public ciudad;
+  public catState: any[] = [];
+  public catSucursal: any[] = [];
+
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getdataBranch();
+    this.getdataState();
 
   }
   getDataDash(branch, date) {
@@ -313,6 +317,23 @@ export class DasboardSupervisorComponent implements OnInit {
       }
     }
   }
+  getdataState() {
+    this.services.serviceGeneralGet("User/GetStateList").subscribe((resp) => {
+      if (resp.success) {
+        this.catState = resp.result;
+        console.log("resp state", this.catState);
+      }
+    });
+  }
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
   getdataBranch() {
     this.services
       .serviceGeneralGet("StockChicken/Admin/All-Branch")
@@ -327,9 +348,9 @@ export class DasboardSupervisorComponent implements OnInit {
   getNameBranch() {
     let branchIdNumber = 0;
     branchIdNumber = Number(this.sucursal);
-    this.dataBranch.forEach(element => {
-      if (element.branchId === branchIdNumber) {
-        this.nameBranch = element.branchName;
+    this.catSucursal.forEach(element => {
+      if (element.idfront === branchIdNumber) {
+        this.nameBranch = element.titulo;
         this.nameBranch = this.nameBranch.toUpperCase();
         console.log('nombre', this.nameBranch);
       }

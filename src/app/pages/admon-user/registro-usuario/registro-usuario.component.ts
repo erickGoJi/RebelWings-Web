@@ -71,6 +71,7 @@ export class RegistroUsuarioComponent implements OnInit {
       });
   }
   getCatalogSucursal(id) {
+    this.catalogSucursal= [];
     console.log('entra', id);
     this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
       if (resp.success) {
@@ -87,7 +88,7 @@ export class RegistroUsuarioComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log("resp", this.data);
-          this.getCatalogSucursal(this.data.sucursalId);
+          this.getCatalogSucursal(this.data.stateId);
         }
       });
   }
