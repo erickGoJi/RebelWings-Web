@@ -59,6 +59,8 @@ export class DasboardRegionalComponent implements OnInit {
   public ciudad;
   public catState: any[] = [];
   public catSucursal: any[] = [];
+  public db;
+
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
 
 
@@ -86,8 +88,18 @@ export class DasboardRegionalComponent implements OnInit {
     }
   }
 
-  detail(data: any, area: number) {
+  detail(data: any, area: number, city) {
     console.log('data', data);
+    console.log('city', city);
+    // id 1 cdmx DB2
+    if (city === '1') {
+      this.db = 'DB2';
+    }
+    // id 2 queretaro DB1
+    else if (city === '2') {
+      this.db = 'DB1';
+    }
+    console.log(`DB ${this.db}`);
     // cocina la mayoria de las tareas se obtiene por id de branch
     // aqui se armara el objeto para que se reutilize el modal detalle de tarea
     // cocina
@@ -107,6 +119,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -129,6 +143,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -151,6 +167,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -173,6 +191,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -195,6 +215,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -222,6 +244,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -243,6 +267,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -265,6 +291,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -287,6 +315,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -309,6 +339,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -329,6 +361,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     data: this.dataTask,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -349,6 +383,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -371,6 +407,8 @@ export class DasboardRegionalComponent implements OnInit {
                     name: data.name,
                     photos: this.photosTemp,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -393,6 +431,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -421,6 +461,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -443,6 +485,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -473,6 +517,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -495,6 +541,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -517,6 +565,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -537,6 +587,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     data: this.dataTask,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -568,6 +620,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -590,6 +644,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -612,6 +668,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -634,6 +692,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });

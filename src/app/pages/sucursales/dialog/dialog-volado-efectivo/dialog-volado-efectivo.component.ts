@@ -34,14 +34,13 @@ export class DialogVoladoEfectivoComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
   }
   close() {
     this.dialogRef.close();
   }
   // get  name sucursal
   getBranch() {
-    this.services.serviceGeneralGet('StockChicken/Admin/All-Branch').subscribe(resp => {
+    this.services.serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${this.data.baseDatos}`).subscribe(resp => {
       if (resp.success) {
         this.dataBranch = resp.result;
         console.log('get branch', this.dataBranch);

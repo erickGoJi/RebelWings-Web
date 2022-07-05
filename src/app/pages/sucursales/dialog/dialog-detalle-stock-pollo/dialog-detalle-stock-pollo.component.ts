@@ -5,22 +5,19 @@ import {
   MAT_DIALOG_DATA,
   MatDialog,
 } from "@angular/material/dialog";
-
 @Component({
-  selector: 'app-dialog-detalle-salon-mantenimiento',
-  templateUrl: './dialog-detalle-salon-mantenimiento.component.html',
-  styleUrls: ['./dialog-detalle-salon-mantenimiento.component.css']
+  selector: 'app-dialog-detalle-stock-pollo',
+  templateUrl: './dialog-detalle-stock-pollo.component.html',
+  styleUrls: ['./dialog-detalle-stock-pollo.component.css']
 })
-export class DialogDetalleSalonMantenimientoComponent implements OnInit {
-
+export class DialogDetalleStockPolloComponent implements OnInit {
   public user;
   public data;
   public taskId;
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
-  constructor(public dialogRef: MatDialogRef<DialogDetalleSalonMantenimientoComponent>,
+  constructor(public dialogRef: MatDialogRef<DialogDetalleStockPolloComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
     public _dialog: MatDialog) { }
@@ -65,8 +62,5 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
       }
     });
   }
+
 }
-
-
-
-

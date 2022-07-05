@@ -24,32 +24,25 @@
         <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
       </div>
     </div>
-    <!-- body -->
+
+    <!-- este solo es para cantidaddes -->
+    <div *ngIf="data.data.amount" class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Codigo de producto</label>
+        <br />
+        <span>{{ data.data.code }}</span>
+      </div>
+    </div>
+    <!-- averageTime -->
     <div class="row mb-4">
       <div class="col-12">
-        <div class="custom-control custom-switch">
-          <input disabled [(ngModel)]="data.data.waitlistTables" type="checkbox" class="custom-control-input"
-            id="waitlistTables">
-          <label class="custom-control-label" for="waitlistTables">¿Hubo personas en espera?</label>
-        </div>
-      </div>
-      <div class="col-12">
-        <label class="title" for="">Número de personas en espera</label>
+        <label class="title" for="">Cantidad de pollo</label>
         <br />
-        <span>{{ data.data.numberPeople }}</span>
+        <span>{{ data.data.amount }}</span>
       </div>
-      <!-- <div class="col-12">
-        <label class="title" for="">¿Cuántas mesas hubo en espera?</label>
-        <br />
-        <span>{{ data.data.howManyTables }}</span>
-      </div> -->
     </div>
-
   </div>
   <div class="modal-footer">
-    <!-- <button style="border-radius: 23px" [disabled]="disabled == true" (click)="save()" type="button"
-      class="btn btn-danger btn-md">
-      Guardar
-    </button> -->
+
   </div>
 </div>

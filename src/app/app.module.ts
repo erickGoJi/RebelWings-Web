@@ -51,6 +51,7 @@ import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/di
 import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.component';
 import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-change-password/dialog-change-password.component';
 import { DialogVoladoEfectivoComponent } from './pages/sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
+import { DialogDetalleStockPolloComponent } from './pages/sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { DialogVoladoEfectivoComponent } from './pages/sucursales/dialog/dialog-
     UsuariosComponent,
     DialogChangePasswordComponent,
     DialogVoladoEfectivoComponent,
+    DialogDetalleStockPolloComponent,
 
 
   ],
