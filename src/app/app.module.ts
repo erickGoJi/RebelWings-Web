@@ -50,6 +50,9 @@ import { RegistroUsuarioComponent } from './pages/admon-user/registro-usuario/re
 import { DialogDetalleRevisionMesaSistemaComponent } from './pages/sucursales/dialog/dialog-detalle-revision-mesa-sistema/dialog-detalle-revision-mesa-sistema.component';
 import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.component';
 import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-change-password/dialog-change-password.component';
+import { DialogVoladoEfectivoComponent } from './pages/sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
+import { DialogDetalleStockPolloComponent } from './pages/sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
+
 
 @NgModule({
   declarations: [
@@ -88,6 +91,8 @@ import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-
     DialogDetalleRevisionMesaSistemaComponent,
     UsuariosComponent,
     DialogChangePasswordComponent,
+    DialogVoladoEfectivoComponent,
+    DialogDetalleStockPolloComponent,
 
 
   ],
@@ -105,7 +110,7 @@ import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   schemas: [],

@@ -5,14 +5,15 @@ import {
   MAT_DIALOG_DATA,
   MatDialog,
 } from "@angular/material/dialog";
+import { Pipe, PipeTransform } from '@angular/core';
+
 
 @Component({
-  selector: 'app-dialog-detalle-salon-mantenimiento',
-  templateUrl: './dialog-detalle-salon-mantenimiento.component.html',
-  styleUrls: ['./dialog-detalle-salon-mantenimiento.component.css']
+  selector: 'app-dialog-volado-efectivo',
+  templateUrl: './dialog-volado-efectivo.component.html',
+  styleUrls: ['./dialog-volado-efectivo.component.css']
 })
-export class DialogDetalleSalonMantenimientoComponent implements OnInit {
-
+export class DialogVoladoEfectivoComponent implements OnInit {
   public user;
   public data;
   public taskId;
@@ -20,7 +21,8 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
   public nameBranch = '';
   public status;
   public url = 'http://34.237.214.147/back/api_rebel_wings/';
-  constructor(public dialogRef: MatDialogRef<DialogDetalleSalonMantenimientoComponent>,
+
+  constructor(public dialogRef: MatDialogRef<DialogVoladoEfectivoComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
     public _dialog: MatDialog) { }
@@ -32,16 +34,12 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
   }
   close() {
     this.dialogRef.close();
   }
-
-
   // get  name sucursal
   getBranch() {
-
     this.services.serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${this.data.baseDatos}`).subscribe(resp => {
       if (resp.success) {
         this.dataBranch = resp.result;
@@ -65,8 +63,7 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
       }
     });
   }
+
 }
-
-
 
 

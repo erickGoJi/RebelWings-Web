@@ -4,7 +4,8 @@ import { DialogDetalleTareaComponent } from '../sucursales/dialog/dialog-detalle
 import { DialogDetalleMesaEsperaComponent } from '../sucursales/dialog/dialog-detalle-mesa-espera/dialog-detalle-mesa-espera.component';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DialogDetalleProductoRiesgoComponent } from '../sucursales/dialog/dialog-detalle-producto-riesgo/dialog-detalle-producto-riesgo.component';
-
+import { DialogVoladoEfectivoComponent } from '../sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
+import { DialogDetalleStockPolloComponent } from '../sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
 
 @Component({
   selector: 'app-dasboard-supervisor',
@@ -28,12 +29,18 @@ export class DasboardSupervisorComponent implements OnInit {
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
+  public ciudad;
+  public catState: any[] = [];
+  public catSucursal: any[] = [];
+  public db;
+
+
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getdataBranch();
+    this.getdataState();
 
   }
   getDataDash(branch, date) {
@@ -54,10 +61,19 @@ export class DasboardSupervisorComponent implements OnInit {
       this.getNameBranch();
     }
   }
-  detail(data: any, area: number) {
+  detail(data: any, area: number, city) {
     this.dataTask = [];
-    console.log('data', data);
-    console.log('area', area);
+    console.log('city', city);
+    // id 1 cdmx DB2
+    if (city === '1') {
+      this.db = 'DB2';
+    }
+    // id 2 queretaro DB1
+    else if (city === '2') {
+      this.db = 'DB1';
+    }
+    console.log(`DB ${this.db}`);
+
 
     // cocina la mayoria de las tareas se obtiene por id de branch
     // aqui se armara el objeto para que se reutilize el modal detalle de tarea
@@ -81,6 +97,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -105,6 +122,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -126,6 +144,7 @@ export class DasboardSupervisorComponent implements OnInit {
                   data: {
                     data: this.dataTask,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -147,7 +166,24 @@ export class DasboardSupervisorComponent implements OnInit {
 
           break;
         case 'Stock de pollo':
-
+          console.log('Stock de pollo');
+          this.services
+            .serviceGeneralGet('StockChicken/' + data.detail)
+            .subscribe((resp) => {
+              if (resp.success) {
+                this.dataTask = resp.result;
+                console.log('get data', this.dataTask);
+                const dialog = this.dialog.open(DialogDetalleStockPolloComponent, {
+                  data: {
+                    name: data.nameTask,
+                    data: this.dataTask,
+                    baseDatos: this.db,
+                  },
+                  width: "30rem",
+                });
+                dialog.afterClosed().subscribe();
+              }
+            });
           break;
         case 'Producto en riesgo':
           console.log('Producto en riesgo');
@@ -161,6 +197,8 @@ export class DasboardSupervisorComponent implements OnInit {
                   data: {
                     name: data.nameTask,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -183,6 +221,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -204,6 +243,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -226,6 +266,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -249,6 +290,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -268,6 +310,8 @@ export class DasboardSupervisorComponent implements OnInit {
                   data: {
                     name: data.nameTask,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -286,11 +330,12 @@ export class DasboardSupervisorComponent implements OnInit {
                 this.dataTask = resp.result;
                 this.photosTemp = this.dataTask.photoCashRegisterShortages;
                 console.log('get data', this.dataTask);
-                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                const dialog = this.dialog.open(DialogVoladoEfectivoComponent, {
                   data: {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
+                    baseDatos: this.db,
                   },
                   width: "30rem",
                 });
@@ -311,6 +356,23 @@ export class DasboardSupervisorComponent implements OnInit {
       }
     }
   }
+  getdataState() {
+    this.services.serviceGeneralGet("User/GetStateList").subscribe((resp) => {
+      if (resp.success) {
+        this.catState = resp.result;
+        console.log("resp state", this.catState);
+      }
+    });
+  }
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
   getdataBranch() {
     this.services
       .serviceGeneralGet("StockChicken/Admin/All-Branch")
@@ -325,9 +387,9 @@ export class DasboardSupervisorComponent implements OnInit {
   getNameBranch() {
     let branchIdNumber = 0;
     branchIdNumber = Number(this.sucursal);
-    this.dataBranch.forEach(element => {
-      if (element.branchId === branchIdNumber) {
-        this.nameBranch = element.branchName;
+    this.catSucursal.forEach(element => {
+      if (element.idfront === branchIdNumber) {
+        this.nameBranch = element.titulo;
         this.nameBranch = this.nameBranch.toUpperCase();
         console.log('nombre', this.nameBranch);
       }

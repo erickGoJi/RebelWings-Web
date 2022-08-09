@@ -17,7 +17,9 @@ export class MantenimientoComponent implements OnInit {
   public dateDash2;
   public nameBranch;
 
-
+  public ciudad;
+  public catState: any[] = [];
+  public catSucursal: any[] = [];
 
   constructor(
     public service: ServiceGeneralService,
@@ -35,7 +37,7 @@ export class MantenimientoComponent implements OnInit {
         console.log("data", this.data);
       }
     });
-    this.getdataBranch();
+    this.getdataState();
   }
   getDataDash(branch, date, date2) {
     console.log('sucursal', branch);
@@ -54,6 +56,24 @@ export class MantenimientoComponent implements OnInit {
       this.getNameBranch();
     }
   }
+
+  getdataState() {
+    this.service.serviceGeneralGet("User/GetStateList").subscribe((resp) => {
+      if (resp.success) {
+        this.catState = resp.result;
+        console.log("resp state", this.catState);
+      }
+    });
+  }
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    this.service.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
   // get que trae todas las sucursales para los filtros
   getdataBranch() {
     this.service
@@ -68,9 +88,9 @@ export class MantenimientoComponent implements OnInit {
   getNameBranch() {
     let branchIdNumber = 0;
     branchIdNumber = Number(this.sucursal);
-    this.dataBranch.forEach(element => {
-      if (element.branchId === branchIdNumber) {
-        this.nameBranch = element.branchName;
+    this.catSucursal.forEach(element => {
+      if (element.idfront === branchIdNumber) {
+        this.nameBranch = element.titulo;
         this.nameBranch = this.nameBranch.toUpperCase();
         console.log('nombre', this.nameBranch);
       }

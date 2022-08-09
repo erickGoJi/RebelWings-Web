@@ -10,14 +10,22 @@
   </div>
   <!-- filtros -->
   <div class="row my-4">
-    <div class="col-md-6 align-center">
+    <div class="col-md-3 align-center">
       <h4 class="subtitle-negro">INFORME DE ACTIVIDAD</h4>
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
+        <label class="non-margin" for="Ciudad">Ciudad</label>
+        <select (change)="getdataSucursal(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+          <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
         <label class="non-margin" for="Sucursal">Sucursal</label>
-        <select (change)="getDataDash(sucursal, dateDash)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
-          <option [value]="item.branchId" *ngFor="let item of dataBranch">{{item.branchName}}</option>
+        <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
+          <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
         </select>
       </div>
     </div>
@@ -162,7 +170,7 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
@@ -192,7 +200,7 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img   src="./assets/icon/ilustracion-ver.svg" *ngIf="item.detail !== 0" (click)="detail(item, 2)"  alt="asistio" width="32" height="32">
+                  <img   src="./assets/icon/ilustracion-ver.svg" *ngIf="item.detail !== 0" (click)="detail(item, 2, ciudad)"  alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
@@ -222,7 +230,7 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" (click)="detail(item,3)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item,3, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
@@ -252,7 +260,7 @@
                   <img *ngIf="item.status !== 1" src="./assets/icon/icon-falt.svg" alt="asistio" width="32" height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" (click)="detail(item, 4)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 4, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>
@@ -284,7 +292,7 @@
                     height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" (click)="detail(item, 5)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 5, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
                 </td>
               </tr>
             </tbody>

@@ -56,7 +56,10 @@ export class DasboardRegionalComponent implements OnInit {
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
-
+  public ciudad;
+  public catState: any[] = [];
+  public catSucursal: any[] = [];
+  public db;
 
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
 
@@ -65,7 +68,7 @@ export class DasboardRegionalComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getdataBranch();
+    this.getdataState();
   }
   getDataDash(branch, date) {
     console.log('sucursal', branch);
@@ -85,8 +88,18 @@ export class DasboardRegionalComponent implements OnInit {
     }
   }
 
-  detail(data: any, area: number) {
+  detail(data: any, area: number, city) {
     console.log('data', data);
+    console.log('city', city);
+    // id 1 cdmx DB2
+    if (city === '1') {
+      this.db = 'DB2';
+    }
+    // id 2 queretaro DB1
+    else if (city === '2') {
+      this.db = 'DB1';
+    }
+    console.log(`DB ${this.db}`);
     // cocina la mayoria de las tareas se obtiene por id de branch
     // aqui se armara el objeto para que se reutilize el modal detalle de tarea
     // cocina
@@ -106,6 +119,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -128,6 +143,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -150,6 +167,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -172,6 +191,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -194,6 +215,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -221,6 +244,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -242,6 +267,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -264,6 +291,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -286,6 +315,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -308,6 +339,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -328,6 +361,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     data: this.dataTask,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -348,6 +383,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -370,6 +407,8 @@ export class DasboardRegionalComponent implements OnInit {
                     name: data.name,
                     photos: this.photosTemp,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -392,6 +431,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -420,6 +461,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -442,6 +485,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -472,6 +517,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -494,6 +541,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -516,6 +565,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -536,6 +587,8 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     data: this.dataTask,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -567,6 +620,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -589,6 +644,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -611,6 +668,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -633,6 +692,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.name,
+                    baseDatos: this.db,
+
                   },
                   width: "30rem",
                 });
@@ -648,23 +709,39 @@ export class DasboardRegionalComponent implements OnInit {
 
 
   }
+
+  getdataState() {
+    this.services.serviceGeneralGet("User/GetStateList").subscribe((resp) => {
+      if (resp.success) {
+        this.catState = resp.result;
+        console.log("resp state", this.catState);
+      }
+    });
+  }
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
   getdataBranch() {
-    this.services
-      .serviceGeneralGet("StockChicken/Admin/All-Branch")
-      .subscribe((resp) => {
-        if (resp.success) {
-          this.dataBranch = resp.result;
-          console.log("resp", this.dataBranch);
-        }
-      });
+    this.services.serviceGeneralGet("StockChicken/Admin/All-Branch").subscribe((resp) => {
+      if (resp.success) {
+        this.dataBranch = resp.result;
+        console.log("resp", this.dataBranch);
+      }
+    });
   }
 
   getNameBranch() {
     let branchIdNumber = 0;
     branchIdNumber = Number(this.sucursal);
-    this.dataBranch.forEach(element => {
-      if (element.branchId === branchIdNumber) {
-        this.nameBranch = element.branchName;
+    this.catSucursal.forEach(element => {
+      if (element.idfront === branchIdNumber) {
+        this.nameBranch = element.titulo;
         this.nameBranch = this.nameBranch.toUpperCase();
         console.log('nombre', this.nameBranch);
       }

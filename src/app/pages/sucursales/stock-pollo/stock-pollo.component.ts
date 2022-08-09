@@ -11,24 +11,37 @@ import { DialogGeneralMessageComponent } from "app/pages/dialog-general/dialog-g
 })
 export class StockPolloComponent implements OnInit {
   public today = new Date();
-
+  public DB;
   public data: any[] = [];
 
   constructor(
     public service: ServiceGeneralService,
     public _dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    console.log("get data");
+    // console.log("get data");
+    // this.service
+    //   .serviceGeneralGet(`StockChicken/Admin/All-Branch`)
+    //   .subscribe((resp) => {
+    //     if (resp.success) {
+    //       this.data = resp.result;
+    //       console.log("data", this.data);
+    //     }
+    //   });
+  }
+  getdataStock(db) {
+    console.log(`base seleccionada ${db}`);
+
     this.service
-      .serviceGeneralGet("StockChicken/Admin/All-Branch")
+      .serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${db}`)
       .subscribe((resp) => {
         if (resp.success) {
           this.data = resp.result;
           console.log("data", this.data);
         }
       });
+    // StockChicken/Admin/All-Branch?dataBase=DB2
   }
   addStock(id: number, name: string, branch: number) {
     const dialogRef = this._dialog.open(DialogAddStockPolloComponent, {
@@ -61,7 +74,7 @@ export class StockPolloComponent implements OnInit {
           width: "350px",
         });
         this.ngOnInit();
-      } else if (result == 3 ) {
+      } else if (result == 3) {
         const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
             header: "Error",

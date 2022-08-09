@@ -39,7 +39,7 @@ export class DialogDetalleEncuestaComponent implements OnInit {
   // get  name sucursal
   getBranch() {
 
-    this.services.serviceGeneralGet('StockChicken/Admin/All-Branch').subscribe(resp => {
+    this.services.serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${this.data.baseDatos}`).subscribe(resp => {
       if (resp.success) {
         this.dataBranch = resp.result;
         console.log('get branch', this.dataBranch);
