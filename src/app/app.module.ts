@@ -52,6 +52,9 @@ import { UsuariosComponent } from './pages/admon-user/usuarios/usuarios.componen
 import { DialogChangePasswordComponent } from './pages/sucursales/dialog/dialog-change-password/dialog-change-password.component';
 import { DialogVoladoEfectivoComponent } from './pages/sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
 import { DialogDetalleStockPolloComponent } from './pages/sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
+import { ModalComponent } from './pages/sucursales/dialog/modal/modal.component';
+import { DialogDetalleAperturaComponent } from './pages/sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
+import { DialogDetalleAsistenciaComponent } from './pages/sucursales/dialog/dialog-detalle-asistencia/dialog-detalle-asistencia.component';
 
 
 @NgModule({
@@ -93,6 +96,9 @@ import { DialogDetalleStockPolloComponent } from './pages/sucursales/dialog/dial
     DialogChangePasswordComponent,
     DialogVoladoEfectivoComponent,
     DialogDetalleStockPolloComponent,
+    ModalComponent,
+    DialogDetalleAperturaComponent,
+    DialogDetalleAsistenciaComponent,
 
 
   ],
