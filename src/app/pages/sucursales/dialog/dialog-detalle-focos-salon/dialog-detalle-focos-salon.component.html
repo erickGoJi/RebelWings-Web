@@ -27,6 +27,9 @@
     <!-- body -->
     <div class="row mb-4">
       <div class="col-12">
+        <label class="title" for="">Funcionan</label>
+      </div>
+      <div class="col-12">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.brokenSpotlight" type="checkbox" class="custom-control-input"
             id="brokenSpotlight">
@@ -37,6 +40,17 @@
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentFoco }}</span>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías Funcionan</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of photosA; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Autorizados</label>
       </div>
       <div class="col-12">
         <div class="custom-control custom-switch">
@@ -52,15 +66,7 @@
       </div>
       <!--PHOTOS-->
       <div class="col-12">
-        <label class="title" for="">Fotografías Cont. A</label>
-        <div class="row">
-          <div class="col-4" *ngFor="let photo of photosA; index as position">
-            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <label class="title" for="">Fotografías Cont. B</label>
+        <label class="title" for="">Fotografías Autorizados</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of photosB; index as position">
             <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">

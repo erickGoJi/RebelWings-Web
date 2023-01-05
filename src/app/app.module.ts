@@ -55,6 +55,7 @@ import { DialogDetalleStockPolloComponent } from './pages/sucursales/dialog/dial
 import { ModalComponent } from './pages/sucursales/dialog/modal/modal.component';
 import { DialogDetalleAperturaComponent } from './pages/sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
 import { DialogDetalleAsistenciaComponent } from './pages/sucursales/dialog/dialog-detalle-asistencia/dialog-detalle-asistencia.component';
+import { NgRatingBarModule } from "ng-rating-bar";
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import { DialogDetalleAsistenciaComponent } from './pages/sucursales/dialog/dial
     HttpClientModule,
     CommonModule,
     MatDialogModule,
+    NgRatingBarModule,
   ],
   providers: [],
   schemas: [],

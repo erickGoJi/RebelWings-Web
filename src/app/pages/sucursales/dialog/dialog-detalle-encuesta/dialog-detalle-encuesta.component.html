@@ -81,11 +81,14 @@
           </label>
         </div>
       </div>
-      <!-- <div class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <label class="title" for="">¿Cómo calificarías tu experiencia en Rebel Wings?</label>
         <br />
-        <span>{{ data.data.email }}</span>
-      </div> -->
+        <ng-rating-bar 
+          [(value)]="data.data.review"
+          [ratingCount]="5"
+        ></ng-rating-bar>
+      </div>
 
       <div class="col-6">
         <label class="title" for="">Fotografías</label>

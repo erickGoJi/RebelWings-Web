@@ -479,7 +479,7 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
                     photos: this.photosTemp
                   },
-                  height: '350px'
+                  width: '30rem'
                 });
                 dialog.afterClosed().subscribe();
               }
