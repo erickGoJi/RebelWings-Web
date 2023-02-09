@@ -2,6 +2,7 @@ import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceGeneralService } from 'app/core/services/service-general/service-general.service';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-dashboard-performance-regional',
@@ -19,6 +20,28 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
   public dateDash;
   public dateDashTwo;
   public data: any;
+  public chartOptions: any;
+
+  // Charts Dounut
+  singleDounut = [];
+  view: [number, number] = [900, 400];
+
+  // options
+  gradient: boolean = true;
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+
+  // Chart Staked
+  multi: [];
+
+  // options
+  showXAxis: boolean = true;
+  showYAxis: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Sucursal';
+  showYAxisLabel: boolean = true;
+  yAxisLabel: string = 'Actividades';
 
   constructor(public services: ServiceGeneralService,private router: Router) { }
 
@@ -59,6 +82,8 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log('data dash', this.data);
+          this.singleDounut = resp.result.topOmittedTask;
+          this.multi = resp.result.multi;
         }
       });
     }
@@ -74,6 +99,18 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
         branch: item.idBranch
       }
     ]);
+  }
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }

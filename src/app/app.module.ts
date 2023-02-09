@@ -59,6 +59,7 @@ import { NgRatingBarModule } from "ng-rating-bar";
 import { MermasComponent } from './pages/sucursales/mermas/mermas.component';
 import { DashboardPerformanceRegionalComponent } from "./pages/dashboard-performance-regional/dashboard-performance-regional.component";
 import { DashboardPerformanceSupervisorComponent } from './pages/dashboard-performance-supervisor/dashboard-performance-supervisor.component';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { DashboardPerformanceSupervisorComponent } from './pages/dashboard-perfo
     CommonModule,
     MatDialogModule,
     NgRatingBarModule,
+    NgxChartsModule
   ],
   providers: [],
   schemas: [],
